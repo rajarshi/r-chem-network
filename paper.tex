@@ -1,7 +1,6 @@
 \documentclass[12pt,letterpaper]{article}
 \usepackage{url}
 \usepackage{ctable}
-\usepackage{overcite}
 \usepackage[onehalfspacing]{setspace}
 \usepackage{graphicx}
 \usepackage{fullpage, times}
@@ -31,6 +30,19 @@ A nice abstract
 \section{Handling Small Molecules in R}
 \label{sec:handl-small-molec}
 
+Small molecule representations are, in general, text based. However,
+due to the plethora of chemical formats, they are not natively handled
+within R.  Traditionally, one must compute numerical features for
+small molecules and perform cheminformatics related manipulation
+outside R and import the results of such operations into the R
+workspace. An alternative approach is to integrate cheminformatics
+toolkits such as the CDK \cite{Steinbeck:2003bh}, RDKit or Indigo into
+the R environment. Currently there are two packages that support this
+- ChemmineR \cite{Cao:2008fj} and rcdk \cite{Guha:2007aa}.
+
+In this section we briefly review the functionality provided by the
+rcdk package, primarily focused on manipulating molecular structures.
+
 \section{Linking Small Molecules to Targets, Pathways and Diseases}
 \label{sec:link-small-molec}
 
@@ -51,5 +63,6 @@ A nice abstract
 \section{Summary}
 \label{sec:summary}
 
+\bibliography{paper}
 
 \end{document}

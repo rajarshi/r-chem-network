@@ -4,6 +4,12 @@
 \usepackage[onehalfspacing]{setspace}
 \usepackage{graphicx}
 \usepackage{fullpage, times}
+\usepackage{listings}
+
+%% margin notes - comment out before submission
+\usepackage{marginnote}
+\usepackage[top=2.54cm, bottom=2.54cm, outer=5cm, inner=1.25cm, heightrounded, marginparwidth=4cm, marginparsep=0.25in]{geometry}
+\renewcommand*{\marginfont}{\color{red}\small}
 
 \DeclareGraphicsExtensions{.pdf,.png}
 \onehalfspacing
@@ -11,6 +17,7 @@
 \bibliographystyle{jcics}
 \usepackage{anysize}
 
+\newcommand{\rcdk}{\texttt{rcdk}\ }
 
 \begin{document}
 \title{Exploring the Role of Small Molecules in Biological Systems Using Network Approaches}
@@ -30,21 +37,86 @@ A nice abstract
 \section{Handling Small Molecules in R}
 \label{sec:handl-small-molec}
 
-Small molecule representations are, in general, text based. However,
-due to the plethora of chemical formats, they are not natively handled
-within R.  Traditionally, one must compute numerical features for
-small molecules and perform cheminformatics related manipulation
-outside R and import the results of such operations into the R
-workspace. An alternative approach is to integrate cheminformatics
-toolkits such as the CDK \cite{Steinbeck:2003bh}, RDKit or Indigo into
-the R environment. Currently there are two packages that support this
-- ChemmineR \cite{Cao:2008fj} and rcdk \cite{Guha:2007aa}.
+Though small molecule are represented in text based formats (SMILES,
+SDF, MOL2, InChI, etc.), the R environment does not support parsing
+and subsequent manipulation of small molecule structures. The
+traditional approach has been to compute numerical features for small
+molecules and perform cheminformatics related manipulation outside R
+and import the results of such operations into the R workspace. An
+alternative approach is to integrate cheminformatics toolkits such as
+the CDK \cite{Steinbeck:2003bh}, RDKit or Indigo into the R
+environment. Currently there are two packages that support this -
+\texttt{ChemmineR} \cite{Cao:2008fj} and \rcdk \cite{Guha:2007aa}. In this
+section we briefly review the functionality provided by the \rcdk
+package, which is an idiomatic R wrapper around the CDK Java library,
+primarily focused on manipulating molecular structures.
 
-In this section we briefly review the functionality provided by the
-rcdk package, primarily focused on manipulating molecular structures.
+Working with small molecule structure data can be broadly grouped into
+three tasks - input/output, manipulation \& modification of structures
+and computations on molecular structures. The \rcdk package supports
+input of all chemical file formats supported by the CDK, including
+SMILES, MOL MOL2, SDF and PDB formats. When used with the
+\texttt{rinchi}, input and output of the InChI format is also
+supported. Chemical structure files can be read locally or over the
+internet. In addition to generic file loading, helper functions are
+available for the SMILES format, given its ubiquitous use as a
+structure exchange format.
+
+Molecular structures are loaded in as references to Java objects. That
+is, they are not native R data structures and thus can only be
+manipulated using methods from the \texttt{rJava} package. While
+inconvenient, the low level details are hidden from view and the \rcdk
+package provides an idiomatic R interface to various CDK methods that
+operate on molecules, bonds and atoms. For example, given a SMILES
+string one can count the number of aromatic atoms using the following
+R code
+\begin{lstlisting}
+mol <- parse.smiles('CNCc1ccccc1')[[1]]
+length(which(sapply(get.atoms(mol), 
+    function(atom) 
+        is.aromatic(atom))))  
+\end{lstlisting}
+Other methods support operations on bonds, identifying substructures
+and retrieving atom or bond properties.
+
+\marginnote{A cmment}From an analytic point of view, functions that perform computations on
+molecular structures are probably the most useful. Such computations
+can range from evaluating molecular descriptors \cite{Guha:2012vn} and
+generating fingerprints to computing a variety of similarities and so
+on. The \rcdk package provides a simple interface to descriptor and
+fingerprint calculation. Importantly, the results from these functions
+can easily be employed in a network based approach when coupled with
+\texttt{igraph}. As an example, consider a similarity network
+constructed for 100 molecules, using a Tanimoto cutoff of 0.75
+
+\begin{lstlisting}
+library(rcdk)
+library(igraph)
+library(fingerprint)
+mols <- load.molecules('data/mipe-std.smi')
+fps <- lapply(mols, get.fingerprint)
+smat <- fp.sim.matrix(fps)
+smat[ smat < 0.75 ] <- 0
+g <- graph.adjacency(smat, mode='undirected', 
+    weight=TRUE, diag=FALSE)  
+\end{lstlisting}
 
 \section{Linking Small Molecules to Targets, Pathways and Diseases}
 \label{sec:link-small-molec}
+
+Since small molecules are fundamentally weighted networks (of atoms
+and bonds), a variety of graph algorithms can be applied to them to
+derive invariants (also known as topological descriptors
+\cite{Guha:2012vn}). However, small molecules interact with protein
+targets and the targets themselves interact with each other. Such
+explicit interactions lend themselves naturally to network
+representations. More generally, observed or computed relationships
+between small molecules, protein or gene targets and diseases allow
+one to develop network representations which can then be visualized
+and quantified to support integrative analyses of multiple data
+types. In the following subsections we highlight applications of this
+approach and where possible provide examples of R code to generate and
+analyze such networks.
 
 \subsection{Drug-target networks}
 \label{sec:drug-target-networks}
@@ -52,6 +124,13 @@ rcdk package, primarily focused on manipulating molecular structures.
 
 \subsection{Disease networks}
 \label{sec:disease-networks}
+
+\subsection{Assay networks}
+\label{sec:assay-networks}
+
+\subsection{Scaffold networks}
+\label{sec:scaffold-networks}
+
 
 \subsection{Dynamic networks}
 \label{sec:dynamic-networks}

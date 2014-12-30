@@ -5,6 +5,7 @@
 \usepackage{graphicx}
 \usepackage{fullpage, times}
 \usepackage{listings}
+\usepackage{hyperref}
 
 %% margin notes - comment out before submission
 \usepackage{marginnote}
@@ -127,6 +128,34 @@ analyze such networks.
 
 \subsection{Assay networks}
 \label{sec:assay-networks}
+
+Most high throughput screening campaigns tend to involve multiple
+assays. These usually include a primary screen followed by one or more
+secondary screens as well as counter-screens. When data from such
+campaigns are deposited into public databases such as Pubchem, the
+temporal sequence of the assays is not always maintained. As a result
+it can be difficult to track the progression of chemical matter
+through the series of assays. In addition, a view of the complete
+assay sequence can allow one to detect commonalities between programs
+and better compare the performance of screening workflows. Calhoun et
+al \cite{Calhoun:2012uq} describe an approach to reconstructing
+screening workflows (also termed workflow graphs) from screening
+datasets. They employed four heuristic rules to construct graphs from
+the data as well as using Pubchem Bioassay meta data and text mining
+to identify assays from a given project. These assay networks can be
+visualized using an online tool located at
+\href{http://swami.wustl.edu/flow}{http://swami.wustl.edu/flow}.
+Swamidass et al \cite{Swamidass:2014vn} describe an approach to
+constructing ``assay networks'' based on Pubchem data, where assays
+are connected when they exhibit common active (non-promiscuous)
+compounds. In this approach connected assays are correlated since they
+exhibit compounds with similar activities. This method leads to
+connections between apparently unrelated screen allowing one to
+identify compounds that exhibit polypharmacological behavior (i.e.,
+activity against multiple targets) and thus are candidates for
+repurposing. By also labeling screens as phenotypic or biochemical,
+this approach allows one to propose target candidates based on
+connectivity, thus serving as one approach to target deconvolution.
 
 \subsection{Scaffold networks}
 \label{sec:scaffold-networks}

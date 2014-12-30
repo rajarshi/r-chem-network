@@ -160,6 +160,28 @@ connectivity, thus serving as one approach to target deconvolution.
 \subsection{Scaffold networks}
 \label{sec:scaffold-networks}
 
+The notion of a scaffold is common place in medicinal chemistry and is
+usually considered to be a ring-containing substructure pruned of
+sidechains that represents the core structure of a series of
+molecules. An example is the tricyclic core common to a number of
+antidepressants (e.g., amitriptylene and imipramine) shown in Figure
+\ref{fig:tca-core}. Scaffolds allow one to summarize a collection of
+molecules (such as in patent claims) and one can usually assume that
+compounds with the same scaffold will share a common synthetic pathway
+or even a common mechanism of action.
+
+While a number of approaches have been described to generate scaffolds
+\cite{Lewell:1998aa,Bemis:1996aa,Katritzky:2000wf}, a few approaches
+have considered hierarchical decomposition of scaffolds. Examples
+include the HierS method \cite{Wilkens:2005il} and the Scaffold Tree
+method \cite{Schuffenhauer:2007oz}.
+
+\ctable[cap={}, caption={An example of a scaffold. In this case, this
+  scaffold is common to many tricyclic antidepressants}, figure, botcap,
+label={fig:tca-core}]    
+{c}
+{}
+{\includegraphics{img/tca-core}}
 
 \subsection{Dynamic networks}
 \label{sec:dynamic-networks}
@@ -168,9 +190,20 @@ connectivity, thus serving as one approach to target deconvolution.
 \section{R as a Platform for Computational Drug Discovery}
 \label{sec:r-as-platform}
 
-\section{Summary}
+\section{Discussion}
 \label{sec:summary}
 
+\begin{itemize}
+\item Networks on the chemistry side tend to be more for visualization
+\item In many cases the network does not necessarily lead to nove output
+\item A key utility of network approaches is the ability to integrate
+  different data types such as small molecules and proteins
+\item Networks represent an approach to representing multiple
+  relationships in a single contruct - multiple properties of a
+  relatinship between two entities can be encoded by edge properties
+  (width, color, length). Similarly multiple properties of a given
+  entity can be encoded in node properties (size, shape, color) 
+\end{itemize}
 \bibliography{paper}
 
 \end{document}

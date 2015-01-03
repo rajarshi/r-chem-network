@@ -129,6 +129,38 @@ analyze such networks.
 \subsection{SAR networks}
 \label{sec:sar-networks}
 
+Network representations have been used to characterize
+structure-activity relationship (SAR) datasets, most notably in the
+context of activity cliffs \cite{Maggiora:2006aa} - compounds that are
+structurally similar, but show very different activities. In the approach
+described by Guha and Van Drie \cite{Guha:2008aa}, a Structure
+Activity Landscape Index (SALI) value is computed for each pair of
+molecules in a dataset. The resultant matrix of SALI values is then
+visualized in a network form, where compounds (nodes) are connected by
+an edge if their SALI value lies above a user specified threshold
+(larger SALI values imply a bigger activity cliff). An example of such
+a network is shown in Figure \ref{fig:salinet}. The representation
+allows one to rapidly zoom in on compound pairs that exhibit activity
+cliffs. In addition, the network representation was also employed as a
+way to quantify the ability of a predictive model to correctly predict
+activity cliffs \cite{Guha:2008ab}.
+
+\ctable[cap={}, caption={A SALI network constructed from XXX. See
+  Ref.~\cite{Guha:2008aa} for further details}, figure, botcap,
+label={fig:salinet}]    
+{c}
+{}
+{\includegraphics[width=\linewidth]{img/salinet}}
+
+Network similarity graphs (NSG's) are an alternative network
+visualization of SAR data described by Wawer et al \cite{Wawer:2008aa}
+that employs a different characterization of activity cliffs. This
+approach is designed to multiplex information by combining
+connectivity (representing similarity relationships) with node color
+(potency) and size (discontinuity score \cite{Peltason:2007aa}). This
+approach has been implemented in the SARANEA tool
+\cite{Lounkine:2010fk} and extended \cite{Iyer:2011ij} the NSG concept
+to include mechanism of action information.
 
 \subsection{Assay networks}
 \label{sec:assay-networks}

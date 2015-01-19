@@ -1,36 +1,31 @@
-\documentclass[12pt,letterpaper]{article}
-\usepackage{url}
-\usepackage{ctable}
-\usepackage[onehalfspacing]{setspace}
-\usepackage{graphicx}
-\usepackage{fullpage, times}
-\usepackage{listings}
-\usepackage{hyperref}
+\documentclass[]{book}
 
-%% margin notes - comment out before submission
-\usepackage{marginnote}
-\usepackage[top=2.54cm, bottom=2.54cm, outer=5cm, inner=1.25cm, heightrounded, marginparwidth=4cm, marginparsep=0.25in]{geometry}
-\renewcommand*{\marginfont}{\color{red}\small}
+\usepackage{listings}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[]{natbib}
+\bibliographystyle%
+  {wileynum}%for numerical citation and numerically listed entries in the bibliography
+  %{wileyauy}%for author--year citation and alphabetical order in the bibliography
+\usepackage{wileySTM}
+\usepackage[\ifnum\pdfoutput=1breaklinks\fi]{hyperref}
+
+\title{Exploring the Role of Small Molecules in Biological Systems Using Network Approaches}
+\author{Sourav Das and Rajarshi Guha}
+
+% \author{Sourav Das$^\dagger$ and Rajarshi Guha$^\ddagger$}\\
+% $^\dagger$St. Jude Children's Research Hospital \\ 262 Danny Thomas Place, Memphis, TN 38105 \\
+% $^\ddagger$National Center for Advancing Translational Science \\ 9800 Medical Center Drive  Rockville, MD 20850}
+
 
 \DeclareGraphicsExtensions{.pdf,.png}
-\onehalfspacing
-
-\bibliographystyle{jcics}
-\usepackage{anysize}
 
 \newcommand{\rcdk}{\texttt{rcdk}\ }
 
 \begin{document}
-\title{Exploring the Role of Small Molecules in Biological Systems Using Network Approaches}
-\author{Sourav Das$^\dagger$ and Rajarshi Guha$^\ddagger$\\
-$^\dagger$St. Jude Children's Research Hospital \\ 262 Danny Thomas Place, Memphis, TN 38105 \\
-$^\ddagger$National Center for Advancing Translational Science \\ 9800 Medical Center Drive  Rockville, MD 20850}
-\date{}
-
-\maketitle
-\begin{abstract}
-A nice abstract
-\end{abstract}
+\frontmatter
+\mainmatter
 
 \section{The Role of Networks in Drug Discovery}
 \label{sec:role-networks-drug}
@@ -87,7 +82,7 @@ length(which(sapply(get.atoms(mol),
 Other methods support operations on bonds, identifying substructures
 and retrieving atom or bond properties.
 
-\marginnote{A cmment}From an analytic point of view, functions that perform computations on
+From an analytic point of view, functions that perform computations on
 molecular structures are probably the most useful. Such computations
 can range from evaluating molecular descriptors \cite{Guha:2012vn} and
 generating fingerprints to computing a variety of similarities and so
@@ -152,12 +147,12 @@ cliffs. In addition, the network representation was also employed as a
 way to quantify the ability of a predictive model to correctly predict
 activity cliffs \cite{Guha:2008ab}.
 
-\ctable[cap={}, caption={A SALI network constructed from XXX. See
-  Ref.~\cite{Guha:2008aa} for further details}, figure, botcap,
-label={fig:salinet}]    
-{c}
-{}
-{\includegraphics[width=\linewidth]{img/salinet}}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{img/salinet} 
+  \caption{A SALI network constructed from XXX. See Ref.~\cite{Guha:2008aa} for further details.}
+  \label{fig:salinet}
+\end{figure}
 
 Network similarity graphs (NSG's) are an alternative network
 visualization of SAR data described by Wawer et al \cite{Wawer:2008aa}
@@ -223,12 +218,13 @@ antidepressants (e.g., amitriptylene and imipramine) shown in Figure
 molecules (such as in patent claims) and one can usually assume that
 compounds with the same scaffold will share a common synthetic pathway
 or even a common mechanism of action.
-\ctable[cap={}, caption={An example of a scaffold. In this case, this
-  scaffold is common to many tricyclic antidepressants}, figure, botcap,
-label={fig:tca-core}]    
-{c}
-{}
-{\includegraphics{img/tca-core}}
+\begin{figure}[h]
+  \centering
+  \includegraphics{img/tca-core}
+  \caption{An example of a scaffold. In this case, this
+  scaffold is common to many tricyclic antidepressants.}
+  \label{fig:tca-core}
+\end{figure}
 
 
 While a number of approaches have been described to generate scaffolds
@@ -255,12 +251,13 @@ tree can be used as a guide to exploring chemical space, focusing on
 regions (as represented by a scaffold) where there is minimal activity
 (a ``biological hole'') or high activity.
 
-\ctable[cap={}, caption={An example of a scaffold tree displayed as a
-  radial network, generated from a set of pyruvate kinase inhibitors.}, figure, botcap,
-label={fig:scafftree}]    
-{c}
-{}
-{\includegraphics[width=\linewidth]{img/scafftree-full}}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.9\linewidth]{img/scafftree-full}
+  \caption{An example of a scaffold tree displayed as a  radial
+    network, generated from a set of pyruvate kinase inhibitors.}
+  \label{fig:scafftree}
+\end{figure}
 
 Varin et al \cite{Varin:2011ve} describe ``scaffold networks'' which
 are similar in nature to scaffold trees but instead of a tree
@@ -274,15 +271,16 @@ Scaffold Network algorithm. Using this approach, together with the
 compound set enrichment method \cite{Varin:2010zh} the authors were
 able to efficiently identify active scaffold and active molecules
 
-\ctable[cap={}, caption={An example of the scaffolds generated using
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.75\linewidth]{img/scaffold-network}
+  \caption{An example of the scaffolds generated using
   the Scaffold Tree and Scaffold Network algorithms, starting from
   Alosetron. Blue scaffolds are generated by both methods and green
   scaffolds are generated only by the Scaffold Network
-  method. Modified from Figure 1 in Varin et al \cite{Varin:2011ve}.}, figure, botcap,
-label={fig:scaffnet}]    
-{c}
-{}
-{\includegraphics[width=0.75\linewidth]{img/scaffold-network}}
+  method. Modified from Figure 1 in Varin et al \cite{Varin:2011ve}.}
+  \label{fig:scaffnet}
+\end{figure}
 
 \subsection{Dynamic networks}
 \label{sec:dynamic-networks}

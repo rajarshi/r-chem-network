@@ -27,7 +27,7 @@
 \frontmatter
 \mainmatter
 
-\section{The Role of Networks in Drug Discovery}
+\section{The Role of Networks in Drug Discovery}  
 \label{sec:role-networks-drug}
 Omics technologies are enabling us today to elucidate and interrogate complex relationships between disease, proteins, genetic material and small molecules at an unprecedented speed and scale. Interrogation of relationships reveal common mechanism of action. This may lead to a therapeutic candidate finding application in a seemingly unrelated disease (repositioning) that share a previously unknown causal mechanism. It also allows identification of drug pairs that show synergistic activity stemming from their interactions with complementary pathways. This type of relationship elucidation may also prevent unwanted side-effects if interrogation would reveal an unexpected link to a vital pathway that ought to remain unperturbed. The process of interrogation starts with experiments aimed at elucidating molecular mechanisms and pathways such as yeast two-hybrid techniques, protein and small molecule mass spectrometry, microarray and copy number variation studies. Experiments may also include high throughput screening of millions of chemical compounds against specific biological targets of therapeutic interest to find respective agonists and antagonists. These experiments result in pairwise interaction relationships from which the functional big picture biological network can then be elucidated \cite{Wu2010}. Algorithms that detect communities from complex networks eg. community structure algorithm \cite{girvan2002community} may be used. These network analyses algorithms allow discovery of a set of sparsely interconnected subsets of vertices where the subsets themselves are however densely connected within. In the biological context, this allows connecting a set of biological cycles and smaller pathways into a big picture biological metacommunity network from which inferences on cross-reactivity and new application areas of a drug candidate can be drawn.
 
@@ -288,6 +288,42 @@ able to efficiently identify active scaffold and active molecules
 
 \section{R as a Platform for Computational Drug Discovery}
 \label{sec:r-as-platform}
+
+The core concepts involved in computational drug discovery can be
+reduced to genes, proteins, pathways and small molecules interacting
+with them. Computational representations of these concepts and the
+methods to be manipulate them have been implemented in a variety of
+software tools. A comprehensive computational drug discovery platform
+will include a number of these tools, as it is rare that a single tool
+addresses all aspects.
+
+In this sense, the R environment presents a robust platform for
+computational drug discovery, especially the stages up to and
+including lead optimization. The Bioconductor set of packages provide
+a plethora of tools to analyze a variety of ``omics'' data. Examples
+include packages that support gene expression (microarray or RNAseq)
+analyses, tools for differential expression analysis, gene and pathway
+enrichment analysis and so on. 
+
+In contrast, support for small molecule data is limited. Currently,
+there are two packages that focus on representing and manipulating
+chemical structures - \texttt{ChemmineR} \cite{Cao:2008fj} and \rcdk
+\cite{Guha:2007aa}. Both expose cheminformatics functionality
+implemented in an underlying Java library (JOELib for ChemmineR and
+the CDK for \rcdk). In this section we focus on the use of \rcdk as a
+means to manipulate and analyze chemical structure data.
+
+The \rcdk package supports a variety of chemical structure file
+formats and presents the CDK Java API as a set of idiomatic R
+functions. That is, rather than manually specify fully qualified Java
+packages or resort to writing ``Java in R'' the \rcdk package wraps
+much of the CDK API as ordinary R functions. Thus the atoms in a
+molecule are represented as a set of atom objects. Importantly, atoms
+(and other objects such as bonds and molecules) are stored as
+references to Java objects. While they can be manipulated directly, it
+is unwieldy it is recommended that one uses methods provided by the
+\rcdk package.
+
 
 \section{Discussion}
 \label{sec:summary}

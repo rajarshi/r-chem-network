@@ -69,7 +69,7 @@ dev.off()
 non.singles <- which(degree(g) > 0)
 g2 <- induced.subgraph(g, vids = non.singles)
 vcols <- unlist(sapply(V(g2)$panther, function(x) col21[x]))
-pdf('img/sim-network-connected.pdf', 8,7)
+pdf('img/sim-network-connected.pdf', 9,7)
 layout(matrix(c(1,2,1,2), 2,2, byrow=TRUE), widths=c(3,1), heights=c(1,1))
 par(mar=c(0,0,0,0))
 plot(g2, layout=layout.fruchterman.reingold,
@@ -78,6 +78,6 @@ plot(g2, layout=layout.fruchterman.reingold,
 par(mar=c(0,0,0,0.5))
 plot.new()
 legend('center', legend=names(col21),  fill=unlist(col21),
-       border='white', pt.cex=8, bty='n', y.intersp=1.5,
-       title='PANTHER Class')
+       border='white', cex=1.2, pt.cex=8, bty='n', y.intersp=1.5,
+       title=expression(bold('PANTHER Class')))
 dev.off()

@@ -2,7 +2,7 @@
 %% http://bibdesk.sourceforge.net/
 
 
-%% Created for Guha, Rajarshi (NIH/NCATS) [C] at 2015-01-03 20:47:53 -0500 
+%% Created for Guha, Rajarshi (NIH/NCATS) [C] at 2015-02-22 23:14:37 -0500 
 
 
 %% Saved with string encoding Unicode (UTF-8) 
@@ -10,61 +10,157 @@
 
 @string{jcim = {J.~Chem.~Inf.~Model.}}
 
-@Article{Wu2010,
-AUTHOR = {Wu, Guanming and Feng, Xin and Stein, Lincoln},
-TITLE = {A human functional protein interaction network and its application to cancer data analysis},
-JOURNAL = {Genome Biology},
-VOLUME = {11},
-YEAR = {2010},
-NUMBER = {5},
-PAGES = {R53},
-URL = {http://genomebiology.com/2010/11/5/R53},
-DOI = {10.1186/gb-2010-11-5-r53},
-PubMedID = {20482850},
-ISSN = {1465-6906},
-ABSTRACT = {BACKGROUND:One challenge facing biologists is to tease out useful information from massive data sets for further analysis. A pathway-based analysis may shed light by projecting candidate genes onto protein functional relationship networks. We are building such a pathway-based analysis system.RESULTS:We have constructed a protein functional interaction network by extending curated pathways with non-curated sources of information, including protein-protein interactions, gene coexpression, protein domain interaction, Gene Ontology (GO) annotations and text-mined protein interactions, which cover close to 50\% of the human proteome. By applying this network to two glioblastoma multiforme (GBM) data sets and projecting cancer candidate genes onto the network, we found that the majority of GBM candidate genes form a cluster and are closer than expected by chance, and the majority of GBM samples have sequence-altered genes in two network modules, one mainly comprising genes whose products are localized in the cytoplasm and plasma membrane, and another comprising gene products in the nucleus. Both modules are highly enriched in known oncogenes, tumor suppressors and genes involved in signal transduction. Similar network patterns were also found in breast, colorectal and pancreatic cancers.CONCLUSIONS:We have built a highly reliable functional interaction network upon expert-curated pathways and applied this network to the analysis of two genome-wide GBM and several other cancer data sets. The network patterns revealed from our results suggest common mechanisms in the cancer biology. Our system should provide a foundation for a network or pathway-based analysis platform for cancer and other diseases.},
-}
+
+@article{Franceschini:2013qa,
+	Abstract = {Complete knowledge of all direct and indirect interactions between proteins in a given cell would represent an important milestone towards a comprehensive description of cellular mechanisms and functions. Although this goal is still elusive, considerable progress has been made-particularly for certain model organisms and functional systems. Currently, protein interactions and associations are annotated at various levels of detail in online resources, ranging from raw data repositories to highly formalized pathway databases. For many applications, a global view of all the available interaction data is desirable, including lower-quality data and/or computational predictions. The STRING database (http://string-db.org/) aims to provide such a global perspective for as many organisms as feasible. Known and predicted associations are scored and integrated, resulting in comprehensive protein networks covering >1100 organisms. Here, we describe the update to version 9.1 of STRING, introducing several improvements: (i) we extend the automated mining of scientific texts for interaction information, to now also include full-text articles; (ii) we entirely re-designed the algorithm for transferring interactions from one model organism to the other; and (iii) we provide users with statistical information on any functional enrichment observed in their networks.},
+	Author = {Franceschini, Andrea and Szklarczyk, Damian and Frankild, Sune and Kuhn, Michael and Simonovic, Milan and Roth, Alexander and Lin, Jianyi and Minguez, Pablo and Bork, Peer and von Mering, Christian and Jensen, Lars J},
+	Date-Added = {2015-02-23 04:14:36 +0000},
+	Date-Modified = {2015-02-23 04:14:36 +0000},
+	Doi = {10.1093/nar/gks1094},
+	Journal = {Nucleic Acids Res.},
+	Journal-Full = {Nucleic acids research},
+	Mesh = {Algorithms; Data Interpretation, Statistical; Data Mining; Databases, Protein; Internet; Protein Interaction Mapping; Systems Integration; User-Computer Interface},
+	Month = {Jan},
+	Pages = {D808-D815},
+	Pmc = {PMC3531103},
+	Pmid = {23203871},
+	Pst = {ppublish},
+	Title = {{STRING v9.1}: protein-protein interaction networks, with increased coverage and integration},
+	Volume = {41},
+	Year = {2013},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1093/nar/gks1094}}
+
+@article{Chatr-Aryamontri:2015yf,
+	Abstract = {The Biological General Repository for Interaction Datasets (BioGRID: http://thebiogrid.org) is an open access database that houses genetic and protein interactions curated from the primary biomedical literature for all major model organism species and humans. As of September 2014, the BioGRID contains 749 912 interactions as drawn from 43 149 publications that represent 30 model organisms. This interaction count represents a 50% increase compared to our previous 2013 BioGRID update. BioGRID data are freely distributed through partner model organism databases and meta-databases and are directly downloadable in a variety of formats. In addition to general curation of the published literature for the major model species, BioGRID undertakes themed curation projects in areas of particular relevance for biomedical sciences, such as the ubiquitin-proteasome system and various human disease-associated interaction networks. BioGRID curation is coordinated through an Interaction Management System (IMS) that facilitates the compilation interaction records through structured evidence codes, phenotype ontologies, and gene annotation. The BioGRID architecture has been improved in order to support a broader range of interaction and post-translational modification types, to allow the representation of more complex multi-gene/protein interactions, to account for cellular phenotypes through structured ontologies, to expedite curation through semi-automated text-mining approaches, and to enhance curation quality control.},
+	Author = {Chatr-Aryamontri, Andrew and Breitkreutz, Bobby-Joe and Oughtred, Rose and Boucher, Lorrie and Heinicke, Sven and Chen, Daici and Stark, Chris and Breitkreutz, Ashton and Kolas, Nadine and O'Donnell, Lara and Reguly, Teresa and Nixon, Julie and Ramage, Lindsay and Winter, Andrew and Sellam, Adnane and Chang, Christie and Hirschman, Jodi and Theesfeld, Chandra and Rust, Jennifer and Livstone, Michael S and Dolinski, Kara and Tyers, Mike},
+	Date-Added = {2015-02-23 04:13:45 +0000},
+	Date-Modified = {2015-02-23 04:13:45 +0000},
+	Doi = {10.1093/nar/gku1204},
+	Journal = {Nucleic Acids Res},
+	Journal-Full = {Nucleic acids research},
+	Month = {Jan},
+	Pages = {D470-D478},
+	Pmid = {25428363},
+	Pst = {ppublish},
+	Title = {The {BioGRID} interaction database: 2015 update},
+	Volume = {43},
+	Year = {2015},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1093/nar/gku1204}}
+
+@article{Mi:2005qq,
+	Abstract = {PANTHER is a large collection of protein families that have been subdivided into functionally related subfamilies, using human expertise. These subfamilies model the divergence of specific functions within protein families, allowing more accurate association with function (ontology terms and pathways), as well as inference of amino acids important for functional specificity. Hidden Markov models (HMMs) are built for each family and subfamily for classifying additional protein sequences. The latest version, 5.0, contains 6683 protein families, divided into 31,705 subfamilies, covering approximately 90% of mammalian protein-coding genes. PANTHER 5.0 includes a number of significant improvements over previous versions, most notably (i) representation of pathways (primarily signaling pathways) and association with subfamilies and individual protein sequences; (ii) an improved methodology for defining the PANTHER families and subfamilies, and for building the HMMs; (iii) resources for scoring sequences against PANTHER HMMs both over the web and locally; and (iv) a number of new web resources to facilitate analysis of large gene lists, including data generated from high-throughput expression experiments. Efforts are underway to add PANTHER to the InterPro suite of databases, and to make PANTHER consistent with the PIRSF database. PANTHER is now publicly available without restriction at http://panther.appliedbiosystems.com.},
+	Author = {Mi, Huaiyu and Lazareva-Ulitsky, Betty and Loo, Rozina and Kejariwal, Anish and Vandergriff, Jody and Rabkin, Steven and Guo, Nan and Muruganujan, Anushya and Doremieux, Olivier and Campbell, Michael J and Kitano, Hiroaki and Thomas, Paul D},
+	Date-Added = {2015-02-23 03:48:55 +0000},
+	Date-Modified = {2015-02-23 03:48:55 +0000},
+	Doi = {10.1093/nar/gki078},
+	Journal = {Nucleic Acids Res.},
+	Journal-Full = {Nucleic acids research},
+	Mesh = {Animals; Databases, Protein; Gene Expression Profiling; Humans; Internet; Markov Chains; Mice; Proteins; Rats; Sequence Analysis, Protein; Signal Transduction; Systems Integration; User-Computer Interface},
+	Month = {Jan},
+	Pages = {D284-D288},
+	Pmc = {PMC540032},
+	Pmid = {15608197},
+	Pst = {ppublish},
+	Title = {The {PANTHER} database of protein families, subfamilies, functions and pathways},
+	Volume = {33},
+	Year = {2005},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1093/nar/gki078}}
+
+@article{Hartsperger:2010yg,
+	Abstract = {BACKGROUND: Extensive and automated data integration in bioinformatics facilitates the construction of large, complex biological networks. However, the challenge lies in the interpretation of these networks. While most research focuses on the unipartite or bipartite case, we address the more general but common situation of k-partite graphs. These graphs contain k different node types and links are only allowed between nodes of different types. In order to reveal their structural organization and describe the contained information in a more coarse-grained fashion, we ask how to detect clusters within each node type.
+RESULTS: Since entities in biological networks regularly have more than one function and hence participate in more than one cluster, we developed a k-partite graph partitioning algorithm that allows for overlapping (fuzzy) clusters. It determines for each node a degree of membership to each cluster. Moreover, the algorithm estimates a weighted k-partite graph that connects the extracted clusters. Our method is fast and efficient, mimicking the multiplicative update rules commonly employed in algorithms for non-negative matrix factorization. It facilitates the decomposition of networks on a chosen scale and therefore allows for analysis and interpretation of structures on various resolution levels. Applying our algorithm to a tripartite disease-gene-protein complex network, we were able to structure this graph on a large scale into clusters that are functionally correlated and biologically meaningful. Locally, smaller clusters enabled reclassification or annotation of the clusters' elements. We exemplified this for the transcription factor MECP2.
+CONCLUSIONS: In order to cope with the overwhelming amount of information available from biomedical literature, we need to tackle the challenge of finding structures in large networks with nodes of multiple types. To this end, we presented a novel fuzzy k-partite graph partitioning algorithm that allows the decomposition of these objects in a comprehensive fashion. We validated our approach both on artificial and real-world data. It is readily applicable to any further problem.},
+	Author = {Hartsperger, Mara L. and Bl\"{o}chl, Florian and St\"{u}mpflen, Volker and Theis, Fabian J.},
+	Date-Added = {2015-02-22 21:56:29 +0000},
+	Date-Modified = {2015-02-22 21:56:29 +0000},
+	Doi = {10.1186/1471-2105-11-522},
+	Journal = {{BMC} Bioinformatics},
+	Journal-Full = {BMC bioinformatics},
+	Mesh = {Algorithms; Cluster Analysis; Computational Biology; Models, Biological; Pattern Recognition, Automated; Transcription Factors},
+	Pages = {522},
+	Pmc = {PMC3247861},
+	Pmid = {20961418},
+	Pst = {epublish},
+	Title = {Structuring heterogeneous biological information using fuzzy clustering of k-partite graphs},
+	Volume = {11},
+	Year = {2010},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1186/1471-2105-11-522}}
+
+@article{Chen:2012qy,
+	Abstract = {Predicting potential drug-target interactions from heterogeneous biological data is critical not only for better understanding of the various interactions and biological processes, but also for the development of novel drugs and the improvement of human medicines. In this paper, the method of Network-based Random Walk with Restart on the Heterogeneous network (NRWRH) is developed to predict potential drug-target interactions on a large scale under the hypothesis that similar drugs often target similar target proteins and the framework of Random Walk. Compared with traditional supervised or semi-supervised methods, NRWRH makes full use of the tool of the network for data integration to predict drug-target associations. It integrates three different networks (protein-protein similarity network, drug-drug similarity network, and known drug-target interaction networks) into a heterogeneous network by known drug-target interactions and implements the random walk on this heterogeneous network. When applied to four classes of important drug-target interactions including enzymes, ion channels, GPCRs and nuclear receptors, NRWRH significantly improves previous methods in terms of cross-validation and potential drug-target interaction prediction. Excellent performance enables us to suggest a number of new potential drug-target interactions for drug development.},
+	Author = {Chen, Xing and Liu, Ming-Xi and Yan, Gui-Ying},
+	Date-Added = {2015-02-22 21:53:25 +0000},
+	Date-Modified = {2015-02-22 21:53:25 +0000},
+	Doi = {10.1039/c2mb00002d},
+	Journal = {Mol.~Biosys.},
+	Journal-Full = {Molecular bioSystems},
+	Mesh = {Algorithms; Computational Biology; Drug Discovery; Ion Channels; Models, Theoretical; Protein Interaction Maps; Receptors, Cytoplasmic and Nuclear; Receptors, G-Protein-Coupled},
+	Month = {Jul},
+	Number = {7},
+	Pages = {1970--1978},
+	Pmid = {22538619},
+	Pst = {ppublish},
+	Title = {Drug-target interaction prediction by random walk on the heterogeneous network},
+	Volume = {8},
+	Year = {2012},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1039/c2mb00002d}}
+
+@article{Wu2010,
+	Abstract = {BACKGROUND:One challenge facing biologists is to tease out useful information from massive data sets for further analysis. A pathway-based analysis may shed light by projecting candidate genes onto protein functional relationship networks. We are building such a pathway-based analysis system.RESULTS:We have constructed a protein functional interaction network by extending curated pathways with non-curated sources of information, including protein-protein interactions, gene coexpression, protein domain interaction, Gene Ontology (GO) annotations and text-mined protein interactions, which cover close to 50\% of the human proteome. By applying this network to two glioblastoma multiforme (GBM) data sets and projecting cancer candidate genes onto the network, we found that the majority of GBM candidate genes form a cluster and are closer than expected by chance, and the majority of GBM samples have sequence-altered genes in two network modules, one mainly comprising genes whose products are localized in the cytoplasm and plasma membrane, and another comprising gene products in the nucleus. Both modules are highly enriched in known oncogenes, tumor suppressors and genes involved in signal transduction. Similar network patterns were also found in breast, colorectal and pancreatic cancers.CONCLUSIONS:We have built a highly reliable functional interaction network upon expert-curated pathways and applied this network to the analysis of two genome-wide GBM and several other cancer data sets. The network patterns revealed from our results suggest common mechanisms in the cancer biology. Our system should provide a foundation for a network or pathway-based analysis platform for cancer and other diseases.},
+	Author = {Wu, Guanming and Feng, Xin and Stein, Lincoln},
+	Doi = {10.1186/gb-2010-11-5-r53},
+	Issn = {1465-6906},
+	Journal = {Genome Biology},
+	Number = {5},
+	Pages = {R53},
+	Pubmedid = {20482850},
+	Title = {A human functional protein interaction network and its application to cancer data analysis},
+	Url = {http://genomebiology.com/2010/11/5/R53},
+	Volume = {11},
+	Year = {2010},
+	Bdsk-Url-1 = {http://genomebiology.com/2010/11/5/R53},
+	Bdsk-Url-2 = {http://dx.doi.org/10.1186/gb-2010-11-5-r53}}
+
 @article{girvan2002community,
-  title={Community structure in social and biological networks},
-  author={Girvan, Michelle and Newman, Mark EJ},
-  journal={Proceedings of the National Academy of Sciences},
-  volume={99},
-  number={12},
-  pages={7821--7826},
-  year={2002},
-  publisher={National Acad Sciences}
-}
+	Author = {Girvan, Michelle and Newman, Mark EJ},
+	Journal = {Proceedings of the National Academy of Sciences},
+	Number = {12},
+	Pages = {7821--7826},
+	Publisher = {National Acad Sciences},
+	Title = {Community structure in social and biological networks},
+	Volume = {99},
+	Year = {2002}}
+
 @article{huang2014drugcomboranker,
-  title={DrugComboRanker: drug combination discovery based on target network analysis},
-  author={Huang, Lei and Li, Fuhai and Sheng, Jianting and Xia, Xiaofeng and Ma, Jinwen and Zhan, Ming and Wong, Stephen TC},
-  journal={Bioinformatics},
-  volume={30},
-  number={12},
-  pages={i228--i236},
-  year={2014},
-  publisher={Oxford Univ Press}
-}
+	Author = {Huang, Lei and Li, Fuhai and Sheng, Jianting and Xia, Xiaofeng and Ma, Jinwen and Zhan, Ming and Wong, Stephen TC},
+	Journal = {Bioinformatics},
+	Number = {12},
+	Pages = {i228--i236},
+	Publisher = {Oxford Univ Press},
+	Title = {DrugComboRanker: drug combination discovery based on target network analysis},
+	Volume = {30},
+	Year = {2014}}
+
 @article{iorio2010discovery,
-  title={Discovery of drug mode of action and drug repositioning from transcriptional responses},
-  author={Iorio, Francesco and Bosotti, Roberta and Scacheri, Emanuela and Belcastro, Vincenzo and Mithbaokar, Pratibha and Ferriero, Rosa and Murino, Loredana and Tagliaferri, Roberto and Brunetti-Pierri, Nicola and Isacchi, Antonella and others},
-  journal={Proceedings of the National Academy of Sciences},
-  volume={107},
-  number={33},
-  pages={14621--14626},
-  year={2010},
-  publisher={National Acad Sciences}
-}
+	Author = {Iorio, Francesco and Bosotti, Roberta and Scacheri, Emanuela and Belcastro, Vincenzo and Mithbaokar, Pratibha and Ferriero, Rosa and Murino, Loredana and Tagliaferri, Roberto and Brunetti-Pierri, Nicola and Isacchi, Antonella and others},
+	Journal = {Proceedings of the National Academy of Sciences},
+	Number = {33},
+	Pages = {14621--14626},
+	Publisher = {National Acad Sciences},
+	Title = {Discovery of drug mode of action and drug repositioning from transcriptional responses},
+	Volume = {107},
+	Year = {2010}}
 
 @article{varin2011mining,
-  title={Mining for bioactive scaffolds with scaffold networks: improved compound set enrichment from primary screening data},
-  author={Varin, Thibault and Schuffenhauer, Ansgar and Ertl, Peter and Renner, Steffen},
-  journal={Journal of chemical information and modeling},
-  volume={51},
-  number={7},
-  pages={1528--1538},
-  year={2011},
-  publisher={ACS Publications}
-}
+	Author = {Varin, Thibault and Schuffenhauer, Ansgar and Ertl, Peter and Renner, Steffen},
+	Journal = {Journal of chemical information and modeling},
+	Number = {7},
+	Pages = {1528--1538},
+	Publisher = {ACS Publications},
+	Title = {Mining for bioactive scaffolds with scaffold networks: improved compound set enrichment from primary screening data},
+	Volume = {51},
+	Year = {2011}}
+
 @article{Krein:2011tt,
 	Abstract = {Discontinuous changes in molecular structure (resulting from continuous transformations of molecular coordinates) lead to changes in chemical properties and biological activities that chemists attempt to describe through structure-activity or structure-property relationships (QSAR/QSPR). Such relationships are commonly envisioned in a continuous high-dimensional space of numerical descriptors, referred to as chemistry space. The choice of descriptors defining coordinates within chemistry space and the choice of similarity metrics thus influence the partitioning of this space into regions corresponding to local structural similarity. These are the regions (known as domains of applicability) most likely to be successfully modeled by a structure-activity relationship. In this work the network topology and scaling relationships of chemistry spaces are first investigated independent of a specific biological activity. Chemistry spaces studied include the ZINC data set, a qHTS PubChem bioassay, as well as the space of protein binding sites from the PDB. The characteristics of these networks are compared and contrasted with those of the bioassay SALI subnetwork, which maps discontinuities or cliffs in the structure-activity landscape. Mapping the locations of activity cliffs and comparing the global characteristics of SALI subnetworks with those of the underlying chemistry space networks generated using different representations, can guide the choice of a better representation. A higher local density of SALI edges with a particular representation indicates a more challenging structure-activity relationship using that fingerprint in that region of chemistry space.},
 	Author = {Krein, Michael P and Sukumar, N},
@@ -27072,7 +27168,7 @@ We describe the rcdk package that provides the R user with access to the CDK, a 
 		<key>group name</key>
 		<string>R/Networks</string>
 		<key>keys</key>
-		<string>Lewell:1998aa,Swamidass:2014vn,Liu:2014kq,scaffoldhopping:2014fv,Iyer:2011ij,Wilkens:2005il,Yildirim:2007aa,Vina:2009oq,Goh:2007aa,Pujol:2010zr,Guha:2007aa,Ganter:2008aa,Brown:2006ud,Steinbeck:2003bh,Hanser:2014gl,Katritzky:2000wf,Wetzel:2009uq,Achenbach:2011vn,Krein:2011tt,Schadt:2009zl,Guha:2008ab,Folger:2011tx,Chuang:2007ly,Webb:2014tp,Hopkins:2008aa,Guha:2008aa,Varin:2010zh,Lounkine:2010fk,Bemis:1996aa,Renner:2009wm,Peltason:2007aa,Matlock:2013dn,Maggiora:2006aa,Cao:2008fj,Cakmak:2007aa,Ertl:2011rf,Sam:2007aa,Calhoun:2012uq,Varin:2011ve,Brennan:2009kx,Schuffenhauer:2007oz,Wawer:2008aa,Guha:2012vn</string>
+		<string>Guha:2012vn,Swamidass:2014vn,Liu:2014kq,scaffoldhopping:2014fv,Iyer:2011ij,Wilkens:2005il,Yildirim:2007aa,Vina:2009oq,Goh:2007aa,Pujol:2010zr,Guha:2007aa,Ganter:2008aa,Brown:2006ud,Steinbeck:2003bh,Hanser:2014gl,Katritzky:2000wf,Wetzel:2009uq,Achenbach:2011vn,Krein:2011tt,Schadt:2009zl,Guha:2008ab,Folger:2011tx,Chuang:2007ly,Webb:2014tp,Hopkins:2008aa,Guha:2008aa,Varin:2010zh,Lounkine:2010fk,Bemis:1996aa,Renner:2009wm,Peltason:2007aa,Matlock:2013dn,Maggiora:2006aa,Cao:2008fj,Cakmak:2007aa,Ertl:2011rf,Sam:2007aa,Calhoun:2012uq,Varin:2011ve,Brennan:2009kx,Schuffenhauer:2007oz,Wawer:2008aa,Lewell:1998aa</string>
 	</dict>
 </array>
 </plist>

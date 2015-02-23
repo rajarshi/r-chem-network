@@ -1,6 +1,16 @@
 \documentclass[]{book}
 
 \usepackage{listings}
+\lstset{% general command to set parameter(s)
+basicstyle=\small, % print whole listing small
+keywordstyle=\color{red}\itshape,
+% underlined bold black keywords
+commentstyle=\color{blue}, % white comments
+stringstyle=\ttfamily, % typewriter type for strings
+showstringspaces=false,
+numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, %
+rulesepcolor=\color{black}
+}
 
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
@@ -63,6 +73,45 @@ analyze such networks.
 
 \subsection{Disease networks}
 \label{sec:disease-networks}
+
+Schadt et al \cite{Schadt:2009zl} have stressed the importance of
+viewing diseases as manifestations of perturbed biological networks
+and consequently, the importance of drug discovery approaches that
+address the networks underlying a disease state.. Network approaches
+to exploring diseases have traditionally explored biological networks
+(e.g., protein-protein interaction or gene regulatory networks) in the
+context of individual diseases \cite{Lim:2006fe,
+  Altieri:2008aa}. Other approaches on the other hand have focused on
+classes of disease \cite{Zhang:2013tx} or even all known human
+diseases \cite{Goh:2007aa} (the so called ``diseaseome''). While most
+of these studies have primarily focused on identifying relationships
+between diseases in different ways such as sharing implicated genes
+\cite{Bauer-Mehren:2011tv,Goh:2007aa}, sharing symptoms
+\cite{Zhou:2014qp} or based on bibliometric associations
+\cite{Zhang:2014sh}. Studies on disease networks tend to construct
+heterogenous (or $k$-partite) networks where nodes can represent
+different classes of entities. An example is the network constructed
+from long non-coding RNAs and diseases by Zhou et al
+\cite{Zhou:2015if}. Based on this network, a random walk approach was
+employed to identify novel lncRNA-disease associations. These
+approaches play an important role in drug discovery as they provide
+opportunities for repurposing drugs based on novel disease-target or
+disease-pathway associations. Another view provided by such analysis
+is the druggability of a disease; that is, based on underlying targets
+and pathways, is it even feasible to treat the disease using a small
+molecule intervention \cite{Boran:2010fk}. An important function of
+network analyses of diseases is to go beyond simply identifying new
+targets for diseases or links between diseases, but instead attempt to
+elucidate the mechanisms underlying condition. As an example of this is
+the paradoxical effects of MEK inhibition and PI3K/AKT inhibition and
+the effects on cancer resistance \cite{Sos:2009gc}. Together with knowledge
+of the underlying network connectivity, these approaches allow one to
+design combination treatments - multiple drugs that affect multiple
+targets and pathways. This approach was exemplified by Lehar et al
+\cite{Lehar:2009gu} who proposed that drug combination response
+surfaces were functionally related to the underlying connectivity of
+the drug targets.
+
 
 \subsection{SAR networks}
 \label{sec:sar-networks}

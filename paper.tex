@@ -38,17 +38,44 @@ rulesepcolor=\color{black}
 \frontmatter
 \mainmatter
 
-\chapter{Exploring the Role of Small Molecules in Biological Systems Using Network Approaches}
+\chapter{Exploring the Role of Small Molecules in Biological Systems
+  Using Network Approaches}
 
 The traditional, reductionist view of biology has considered the
 behavior and interactions of individual molecular entities as a way to
 understand and explain biological phenomena. This approach has become
-embodied in the ``one-target, one-drug''  approach to drug
+embodied in the ``one-target, one-drug'' approach to drug
 development. Leaving aside the subtleties of how targets are defined,
-it has become apparent that this model does not correspond very well
-to reality. Instead, it has become increasingly clear that many drugs
-(and more generally, small molecules) interact with multiple targets,
-including their putative primary target. 
+it has become apparent that this model does not always match
+reality. Instead, it has become increasingly clear that many drugs
+(and more generally, small molecules) exhibit polypharmacological
+behavior - interacting with multiple targets, including their putative
+primary target. In many cases, the activity against the primary target
+is significantly higher than off-target activities, minimizing the
+effects of the latter. However, this is not always the case as in the
+example of terfenadine (a histamine H1 antagonist), where off target
+activity against hERG led to an increased risk of cardiac death. But
+more importantly, it is becoming increasingly clear that many diseases
+are not driven by dysfunction of a single a target. Examples include
+diabetes and various cancers. In parallel, even when a single target
+is the main driver for a given disease state, compensatory pathways
+can ``route around'' inhibition of the primary target, thus restoring
+the functional behavior that the primary target is responsible (i.e.,
+the system is now resistant to the original drug)
+\cite{Sierra:2010mz,Dienstmann:2012qr}. Finally, it should be noted
+that while the preceding discussion presents polypharmacological
+behavior as a negative characteristic, this is not always the
+case. Indeed, modern approaches to drug development now consider such
+behavior attractive leading to efforts to rationally design or control
+polypharmacology \cite{Gujral:2014dp,Ciceri:2014fv,Metz:2010ys}.
+
+Given these observations it is clear that pathways play fundamental
+roles in biological systems. Naturally, approaches that analyse these
+networked systems can be effective in understanding their behavior and
+then identifying ways to modulate them. The remainder of this chapter
+looks at how network methods can be applied to various topics in drug
+discovery ranging from drug-target interactions to analyzing
+structure-activity relationships.
 
 \section{The Role of Networks in Drug Discovery}  
 \label{sec:role-networks-drug}
@@ -277,6 +304,86 @@ able to efficiently identify active scaffold and active molecules
   \label{fig:scaffnet}
 \end{figure}
 
+\subsection{Scaffold-document networks}
+\label{sec:scaff-docum-netw}
+
+With the advent of SAR databases such as ChEMBL \cite{Gaulton:2012jl},
+it is feasible to explore chemical space from a bibliometric point of
+view. For example, ChEMBL has identified small molecules mentioned in
+publications and provides the links between them. As a result, given a
+set of document it is possible to characterize the chemical space
+represented in those documents. As noted in Section
+\ref{sec:scaffold-networks}, scaffolds (or frameworks) allow one to
+better capture the core structures representing multiple
+compounds. Thus, a publication might refer to ten compounds from a
+single series, in which case it refers to a single scaffold (though
+this could depend on how one defines a scaffold). To explore this
+aspect of a SAR database, we applied a fragment decomposition method
+to all compounds reported in ChEMBL and linked the fragments
+associated with each molecule to their corresponding documents. The
+resultant data can then be represented as a bipartite network of
+fragments and documents which are connected when a document contains
+molecules that have the fragment as a substructure. 
+
+One application of this dataset is to explore the nature of fragments
+associated with a document, and for each of those fragments identify
+the documents associated with them. This procedure can be repeated to
+construct scaffold-document network that represents the chemical and
+bibliometric space associated with a starting document. As an example
+of this type of analysis we constructed a network starting from a
+report describing a series of imidazonaphthalimides and their
+antitumor activity \cite{Brana:2002pr}. The network was limited to 3
+iterations (document $\rightarrow$ fragment $\rightarrow$ document
+$\rightarrow$ fragment). In addition we applied constraints on the
+fragments (e.g., must be contained in 20 to 50 molecules and exhibit a
+minimum complexity), resulting in a network with 1277 nodes (816
+document nodes and 461 fragment nodes) shown in Figure
+\ref{fig:scafodcnet}. 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{img/12477366}
+  \caption{An example of a scaffold-document network, limited to three
+    iterations. Squares represent fragments and circles represent
+    documents. Document nodes are colored based on their major topic
+    MeSH heading. The seed document is shown with a red border (top
+    left).}
+  \label{fig:scafdocnet}
+\end{figure}
+In this figure, fragment nodes are squares and document nodes are
+circles, colored by the major topic MeSH heading. (Only the 12 most
+frequent MeSH headings are considered - document nodes outside this
+set are colored grey). Though difficult to navigate as a static  
+figure, the network structure is interesting in that the immediate
+neighborhood of the seed document (red border, top left) is relatively
+small. The median number of fragments associated with a document is 1,
+(though two documents were connected to more than 100
+fragments). Conversely, the median number of documents connected to a
+fragment was 3. Fragments tend to be associated with multiple
+documents (which is expected based on the number of iterations used to
+construct the network, as well as the constraints on fragment
+characteristics) and based on the MeSH headings there is topical
+overlap between many of these documents. For example, most document
+clusters are annotated with the \emph{Chemistry} and \emph{Chemical
+  synthesis} MeSH headings. Given that the seed document has been
+annotated with \emph{Chemical synthesis} it is not surprising that
+based on the chemistry contained within it, related documents will
+also be related to synthesis. Importantly, if one considers all
+documents in ChEMBL (with valid Pubmed ID's), the two most frequent
+MeSH headings are \emph{Chemistry} and \emph{Chemical synthesis} and
+thus overrepresentation of these terms is unsurprising. 
+
+This discussion has focused on the document nodes in this network. One
+could also examine the fragment nodes, in terms of their similarity to
+each other. Alternatively, one could examine the ``history'' of a
+fragment in terms of its representation in publications over
+time. Since ChEMBL also provides bioactivity data for the compounds in
+a document this network representation could be used to track the
+progression of bioactivity of a scaffold (or rather its members) over
+time.
+
+
+
+
 \section{R as a Platform for Network Analyses in Drug Discovery}
 \label{sec:r-as-platform}
 
@@ -380,6 +487,12 @@ though interestingly, within the set of compounds targeting
 cytoskeletal proteins there appear to be five distinct groupings. When
 coupled to an interactive platform, this visualization can support
 rapid identification and exploration of novel associations.
+
+% While the \rcdk package and its dependencies provide general small
+% molecule handling functionality, a number of other packages provide
+% more specific functionality, related to small molecules. We have
+% previously mentioned DrugComboRanker \cite{huang2014drugcomboranker}
+% and MANTRA \cite{iorio2010discovery}.
 
 \section{Discussion}
 \label{sec:summary}

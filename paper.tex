@@ -45,23 +45,24 @@ The traditional, reductionist view of biology has considered the
 behavior and interactions of individual molecular entities as a way to
 understand and explain biological phenomena. This approach has become
 embodied in the ``one-target, one-drug'' approach to drug
-development. Leaving aside the subtleties of how targets are defined,
-it has become apparent that this model does not always match
-reality. Instead, it has become increasingly clear that many drugs
-(and more generally, small molecules) exhibit polypharmacological
-behavior - interacting with multiple targets, including their putative
-primary target. In many cases, the activity against the primary target
-is significantly higher than off-target activities, minimizing the
-effects of the latter. However, this is not always the case as in the
-example of terfenadine (a histamine H1 antagonist), where off target
-activity against hERG led to an increased risk of cardiac death. But
+development. Leaving aside the subtleties of how targets are defined
+\cite{Imming:2006lt}, it has become apparent that this model does not
+always match reality. Instead, it has become increasingly clear that
+many drugs (and more generally, small molecules) exhibit
+polypharmacological behavior - interacting with multiple targets,
+including their putative primary target. In many cases, the activity
+against the primary target is significantly higher than off-target
+activities, minimizing the effects of the latter. However, this is not
+always the case as in the example of terfenadine (a histamine H1
+antagonist), where off target activity against hERG
+\cite{Crumb:1995it} led to an increased risk of cardiac death. But
 more importantly, it is becoming increasingly clear that many diseases
 are not driven by dysfunction of a single a target. Examples include
-diabetes and various cancers. In parallel, even when a single target
-is the main driver for a given disease state, compensatory pathways
-can ``route around'' inhibition of the primary target, thus restoring
-the functional behavior that the primary target is responsible (i.e.,
-the system is now resistant to the original drug)
+diabetes and cancer. In parallel, even when a single target is the
+main driver for a given disease state, compensatory pathways can
+``route around'' inhibition of the primary target, thus restoring the
+functional behavior that the primary target is responsible (i.e., the
+system is now resistant to the original drug)
 \cite{Sierra:2010mz,Dienstmann:2012qr}. Finally, it should be noted
 that while the preceding discussion presents polypharmacological
 behavior as a negative characteristic, this is not always the
@@ -72,19 +73,65 @@ polypharmacology \cite{Gujral:2014dp,Ciceri:2014fv,Metz:2010ys}.
 Given these observations it is clear that pathways play fundamental
 roles in biological systems. Naturally, approaches that analyse these
 networked systems can be effective in understanding their behavior and
-then identifying ways to modulate them. The remainder of this chapter
-looks at how network methods can be applied to various topics in drug
-discovery ranging from drug-target interactions to analyzing
-structure-activity relationships.
+then identifying ways to modulate them. Importantly, network
+approaches provide the opportunity to integrate multiple entity types
+(small molecules, protein targets, genes) in a systematic fashion.The
+remainder of this chapter looks at how network methods can be applied
+to various topics in drug discovery ranging from drug-target
+interactions to analyzing structure-activity relationships.
 
 \section{The Role of Networks in Drug Discovery}  
 \label{sec:role-networks-drug}
-Omics technologies are enabling us today to elucidate and interrogate complex relationships between disease, proteins, genetic material and small molecules at an unprecedented speed and scale. Interrogation of relationships reveal common mechanism of action. This may lead to a therapeutic candidate finding application in a seemingly unrelated disease (repositioning) that share a previously unknown causal mechanism. It also allows identification of drug pairs that show synergistic activity stemming from their interactions with complementary pathways. This type of relationship elucidation may also prevent unwanted side-effects if interrogation would reveal an unexpected link to a vital pathway that ought to remain unperturbed. The process of interrogation starts with experiments aimed at elucidating molecular mechanisms and pathways such as yeast two-hybrid techniques, protein and small molecule mass spectrometry, microarray and copy number variation studies. Experiments may also include high throughput screening of millions of chemical compounds against specific biological targets of therapeutic interest to find respective agonists and antagonists. These experiments result in pairwise interaction relationships from which the functional big picture biological network can then be elucidated \cite{Wu2010}. Algorithms that detect communities from complex networks eg. community structure algorithm \cite{girvan2002community} may be used. These network analyses algorithms allow discovery of a set of sparsely interconnected subsets of vertices where the subsets themselves are however densely connected within. In the biological context, this allows connecting a set of biological cycles and smaller pathways into a big picture biological metacommunity network from which inferences on cross-reactivity and new application areas of a drug candidate can be drawn.
+Omics technologies are enabling us today to elucidate and interrogate
+complex relationships between disease, proteins, genetic material and
+small molecules at an unprecedented speed and scale. Interrogation of
+relationships reveal common mechanism of action. This may lead to a
+therapeutic candidate finding application in a seemingly unrelated
+disease (repositioning) that share a previously unknown causal
+mechanism. It also allows identification of drug pairs that show
+synergistic activity stemming from their interactions with
+complementary pathways. This type of relationship elucidation may also
+prevent unwanted side-effects if interrogation would reveal an
+unexpected link to a vital pathway that ought to remain
+unperturbed. The process of interrogation starts with experiments
+aimed at elucidating molecular mechanisms and pathways such as yeast
+two-hybrid techniques, protein and small molecule mass spectrometry,
+microarray and copy number variation studies. Experiments may also
+include high throughput screening of millions of chemical compounds
+against specific biological targets of therapeutic interest to find
+respective agonists and antagonists. These experiments result in
+pairwise interaction relationships from which the functional big
+picture biological network can then be elucidated
+\cite{Wu2010}. Algorithms that detect communities from complex
+networks eg. community structure algorithm \cite{girvan2002community}
+may be used. These network analyses algorithms allow discovery of a
+set of sparsely interconnected subsets of vertices where the subsets
+themselves are however densely connected within. In the biological
+context, this allows connecting a set of biological cycles and smaller
+pathways into a big picture biological metacommunity network from
+which inferences on cross-reactivity and new application areas of a
+drug candidate can be drawn.
 
-Network based approach to mechanism elucidation of small molecules that allow identification of synergistic pairs have been implemented in tools such as the DrugComboRanker \cite{huang2014drugcomboranker}. The authors use a community based partitioning to create a drug metacommunity network and a disease signaling metacommunity network. Drug targets are then mapped onto disease networks to allow identification of synergistic pairs of drugs and complementary mechanisms of action.
-In the tool MANTRA (Mode of Action by NeTwoRk Analysis)\cite{iorio2010discovery}, authors are able to deduce mechanisms of action of new molecules and suggest repositioning of a well known molecule to a new area of application.
+Network based approach to mechanism elucidation of small molecules
+that allow identification of synergistic pairs have been implemented
+in tools such as the DrugComboRanker
+\cite{huang2014drugcomboranker}. The authors use a community based
+partitioning to create a drug metacommunity network and a disease
+signaling metacommunity network. Drug targets are then mapped onto
+disease networks to allow identification of synergistic pairs of drugs
+and complementary mechanisms of action.  In the tool MANTRA (Mode of
+Action by NeTwoRk Analysis)\cite{iorio2010discovery}, authors are able
+to deduce mechanisms of action of new molecules and suggest
+repositioning of a well known molecule to a new area of application.
 
-Network analysis has also found its application in Medicinal Chemistry and High-throughput Screening. Cheminformatics based chemical scaffold and topology networks capture the structure-activity relationships between compounds in screening experiments \cite{varin2011mining}. These help in medicinal chemistry efforts towards the identification and optimization of lead compounds for the  biological target of interest by allowing visualization of the chemical space in the backdrop of biological activity. 
+Network analysis has also found its application in medicinal chemistry
+and high-throughput screening. Cheminformatics based chemical scaffold
+and topology networks capture the structure-activity relationships
+between compounds in screening experiments \cite{Varin:2011ve}. These
+help in medicinal chemistry efforts towards the identification and
+optimization of lead compounds for the biological target of interest
+by allowing visualization of the chemical space in the backdrop of
+biological activity.
   
 
 \section{Linking Small Molecules to Targets, Pathways and Diseases}
@@ -106,6 +153,68 @@ analyze such networks.
 
 \subsection{Drug-target networks}
 \label{sec:drug-target-networks}
+
+Networks constructed from drugs and their protein targets were first
+described by Yildirim et al \cite{Yildirim:2007aa}, who considered
+approved and investigational drugs. Networks built using the former
+subset highlighted a number of ``follow on'' drugs (i.e., drugs
+targeting a protein that is already targeted by another drug. When
+investigational drugs were included in the analysis, the resultant
+network highlighted a more functionally diverse set of protein
+targets. Importantly, the drug-target network representation
+effectively highlights the polypharmacology exhibited by many
+drugs. They also constructed a drug-target protein network by defining
+protein targets as nodes and connecting two nodes if they are targeted
+by the same drug. But integrating this network with a protein-protein
+interaction network they were able to highlight the fact that drug
+target proteins were not as essential \cite{Jeong:2001gd} as high
+degree PPI nodes. While many drug-target networks have been
+constructed from experimentally derived or manually curated data, a
+number of methods to predicting drug-target interactions have also
+been described
+\cite{Alaimo:2013ev,Wang:2013mw,Heiskanen:2013rc}. However, it is
+still an open question as to whether such predicted networks can serve
+as the foundation for downstream analyses, though Pahikkala et al
+\cite{Pahikkala:2014gt} describe a number of guidelines to enhance the
+reliability of predicted drug-target interactions.
+
+Many workers have described analytic approaches based on drug-target
+networks. For example, the MetaCore and MetaDrug suite of tools have
+been used to perform a variety of functional analyses on small
+molecules, particularly metabolites \cite{Brennan:2009kx}.  Examples
+include pathway enrichment analyses and pathway reconstruction. The
+latter is useful in placing new or predicted metabolites in the
+context of known protein-protein and protein-compound
+interactions. Iwata et al \cite{Iwata:2013lk} described the use of a
+drug-target network to identify protein domains that are associated
+with drug side effects. Wang et al \cite{Wang:2013gn} characterized
+the topological properties of drug-target networks and noted that
+target essentiality and centrality were strongly linked to drug side
+effects and that a drugs' side effects were primarily influenced by
+the number of \emph{essential} targets rather than the number of drug
+targets. Drug-target networks have been used as input to a variety of
+predictive models. For example, a model to predict ATC codes from a
+drug-target network was described by Wang et al
+\cite{Wang:2013ye}. Tabei et al \cite{Tabei:2012tn} used a drug-target
+network a input to a classifier that was used to extract chemogenomic
+features. These features represent associations between chemical
+substructures and protein domains. The set of features that provides a
+compressed representation of the drug-target network and the authors
+proposed that they could be used to suggest new substructures for a
+given protein domain.
+
+A number of workers have used drug-target network information as the
+basis of drug repositioning methodologies. Wang et al
+\cite{Wang:2014lp} who combined drug-target and disease-target
+networks to generate repositioning hypotheses. Tan et al
+\cite{Tan:2014qb} employed drug-target networks as a component of a
+larger workflow that included chemical structure similarity, gene
+semantic similarity to identify new indications for a number of
+preexisting drugs.  Peng et al \cite{Peng:2014vy} considered a variant
+of the drug-target network concept by developing an interaction
+network of FDA approved drugs and protein pockets. Drugs were docked
+into each pocket and the docking score was used to define edges
+between the drug and protein whose pocket it was docked to.
 
 
 \subsection{Disease networks}

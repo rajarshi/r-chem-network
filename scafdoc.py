@@ -6,7 +6,7 @@ import Queue, urllib
 import cPickle as pickle
 
 global n
-max_round = 3
+max_round = 4
 
 db = MySQLdb.connect(host="carnot.ncats.nih.gov", # your host, usually localhost
                      user="chembl_18", # your username

@@ -72,7 +72,8 @@ vcols <- unlist(sapply(V(g2)$panther, function(x) col21[x]))
 pdf('img/sim-network-connected.pdf', 9,7)
 layout(matrix(c(1,2,1,2), 2,2, byrow=TRUE), widths=c(3,1), heights=c(1,1))
 par(mar=c(0,0,0,0))
-plot(g2, layout=layout.fruchterman.reingold,
+l <- layout.fruchterman.reingold(g2, niter=1000, area=80*vcount(g2)^2)
+plot(g2, layout=l,
      margin=0,
      vertex.label=NA, vertex.size=2.5, vertex.color=vcols)
 par(mar=c(0,0,0,0.5))

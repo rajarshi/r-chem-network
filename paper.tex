@@ -83,14 +83,17 @@ interactions to analyzing structure-activity relationships.
 
 Computational approaches in drug discovery, such as docking and
 statistical QSAR, tend to focus on interactions between small
-molecules and protein targets. Network representations and models play
-a variety of roles in the \emph{in silico} drug discovery pipeline
-ranging from visualization of heteregeneous datasets
-\cite{Huan:2010cy,Kuhn:2010zr} to developing predictive models of drug
-action \cite{Vina:2009oq,Folger:2011tx}. A necessary requirement for
-network based analyses is the availability of network (or interaction)
-data. This can come in many forms. Examples include protein-protein
-interaction (PPI) databases such as BioGRID
+molecules and protein targets. By definition they do not consider the
+surrounding functional environment of interacting proteins and related
+pathways. Network representations on the other hand are capable of
+capturing the functional context of individual molecular entities and
+network models play a variety of roles in the \emph{in silico} drug  
+discovery pipeline ranging from visualization of heteregeneous
+datasets \cite{Huan:2010cy,Kuhn:2010zr} to developing predictive
+models of drug action \cite{Vina:2009oq,Folger:2011tx}. A necessary
+requirement for network based analyses is the availability of network
+(or interaction) data. This can come in many forms. Examples include
+protein-protein interaction (PPI) databases such as BioGRID
 \cite{Chatr-Aryamontri:2015yf} and STRING \cite{Franceschini:2013qa}
 and drug-target databases such as DrugBank
 \cite{Wishart:2008aa}. Bioactivity databases such as Pubchem and
@@ -107,26 +110,35 @@ stages of the drug discovery pipeline. For example, target
 identification can benefit from network analyses by characterizing the
 role of a given target in the context of the larger interaction and
 regulatory network. Thus targeting proteins that have a high degree of
-connectedness may lead to significant side effects in other parts of
-the system [REF] and can be the source of observed side effects. On
-these lines, approaches to characterize toxicity have employed network
-analyses \cite{Kim:2014xs,Zhang:2014hj}. While some approaches have
-considered side effects [REF] others have considered the problem at
-the genomic level by characterizing gene networks that are perturbed
-by small molecules. Campaigns focused on combination therapies can
-also benefit from a network representation and network inference
-approaches \cite{Huang:2014by,Tang:2013lr} to identify target
-combinations whose simultaneous inhibition leads to synergistic
-effects. Mechanism of action studies can benefit from network analyses
-by integrating multiple data types. An example of this was described
-by Young et al \cite{Young:2008aa} that integrated high content
-screening and ligand-target prediction models to construct network
-representations of MoA hypotheses. Network approaches have also been
-proposed for SAR analysis \cite{Iyer:2011ij,Wawer:2008aa}, usually at
-the lead optimization stage of the discovery pipeline. Drug
-repositioning efforts \cite{Dudley:2011dn,Gottlieb:2011rx} benefit
-from network analyses such as community detection algorithms
+connectedness (as measured by essentiality and centrality) may lead to
+significant side effects in other parts of the system and can be the
+source of observed side effects \cite{Wang:2013gn}. On these lines,
+approaches to characterize toxicity have employed network analyses
+\cite{Kim:2014xs,Zhang:2014hj}. While some approaches have considered
+side effects [REF] others have considered the problem at the genomic
+level by characterizing gene networks that are perturbed by small
+molecules. Campaigns focused on combination therapies can also benefit
+from a network representation and network inference approaches
+\cite{Huang:2014by,Tang:2013lr} to identify target combinations whose
+simultaneous inhibition leads to synergistic effects. Mechanism of
+action studies can benefit from network analyses by integrating
+multiple data types. An example of this was described by Young et al
+\cite{Young:2008aa} that integrated high content screening and
+ligand-target prediction models to construct network representations
+of MoA hypotheses. Network approaches have also been proposed for SAR
+analysis \cite{Iyer:2011ij,Wawer:2008aa}, usually at the lead
+optimization stage of the discovery pipeline. Drug repositioning
+efforts \cite{Dudley:2011dn,Gottlieb:2011rx} benefit from network
+analyses such as community detection algorithms
 \cite{girvan2002community}.
+
+While drugs can range from small molecules to antibodies and from pure
+compounds to mixtures, the following sections focus on how network
+approaches have been used to characterize and model the interactions
+of small molecules with biological systems. We group such interactions
+based on the nature of the interacting entities and provide a brief
+overview of recent work on how network representations have been
+employed to analyze them. 
 
 \section{Linking Small Molecules to Targets, Pathways and Diseases}
 \label{sec:link-small-molec}
@@ -484,9 +496,6 @@ a document this network representation could be used to track the
 progression of bioactivity of a scaffold (or rather its members) over
 time.
 
-
-
-
 \section{R as a Platform for Network Analyses in Drug Discovery}
 \label{sec:r-as-platform}
 
@@ -591,18 +600,13 @@ cytoskeletal proteins there appear to be five distinct groupings. When
 coupled to an interactive platform, this visualization can support
 rapid identification and exploration of novel associations.
 
-% While the \rcdk package and its dependencies provide general small
-% molecule handling functionality, a number of other packages provide
-% more specific functionality, related to small molecules. We have
-% previously mentioned DrugComboRanker \cite{huang2014drugcomboranker}
-% and MANTRA \cite{iorio2010discovery}.
-
 \section{Discussion}
 \label{sec:summary}
 
-In this chapter we have attempted to provide an overview of how
-networks have been employed to analyze and visualize chemical
-data. The fact that chemical structures themselves are graphs allows
+In this chapter we have summarized how
+networks have been employed to analyze and visualize small molecule
+data (structures, interactions, activity) in the context of protein
+and gene targets. The fact that chemical structures themselves are graphs allows
 one to apply a number of techniques from graph theory to characterize
 chemical structure (such as the many graph invariants). However, with
 the advent of large collections of chemical structures (from databases
@@ -614,10 +618,14 @@ collections using network techniques.
 It is interesting to note that many applications of network methods to
 chemical collections focus on visualization of the chemical data,
 rather than using the network structure to draw insight into the
-underlying chemical of biological phenomena. This is not to say that
+underlying chemical or biological phenomena. This is not to say that
 network visualizations of chemical data are lacking. In fact, such
 visualizations allow one to encode multiple properties of objects
-(i.e., nodes) and relationships (i.e., edges) in a single visual form. 
+(i.e., nodes) and relationships (i.e., edges) in a single visual
+form. However, in many cases, studies tend to report structural
+characterizations (average vertex degree, centrality values and so on)
+but do not make a persuasive link between these and the underlying
+chemistry and biology.
 
 However, a key utility of network approaches is the ability to
 integrate different data types (such as small molecules and their
@@ -631,6 +639,22 @@ each class of entity on other classes of entities. This is exemplified
 by random walk approaches on bipartite networks such as that described
 by Chen et al \cite{Chen:2012qy} whose proposed a random walk approach
 to predict drug-target interactions.
+
+In conclusion, network representations of molecular entities and their
+interactions are a powerful tool that captures (possibly) large and
+heterogenous datasets. Network approaches have been employed at
+various stages of the drug discovery pipeline ranging from target
+identification to SAR analysis. While one could argue that many
+results from network approaches could be achieved by simpler tabular
+queries, it is evident that in a number of cases, the integrative
+nature of network methods provides a novel view of the data and opens
+up alternative avenues of investigation.
+
+\section{Acknowledgements}
+\label{sec:acknowledgements}
+
+We would like to thank Dac-Trung Nguyen and Tyler Peryea for fruitful
+discussions related scaffold and scaffold-document networks.
 
 \bibliography{paper}
 

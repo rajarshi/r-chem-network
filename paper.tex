@@ -22,7 +22,7 @@ rulesepcolor=\color{black}
 \usepackage[\ifnum\pdfoutput=1breaklinks\fi]{hyperref}
 
 \title{Exploring the Role of Small Molecules in Biological Systems Using Network Approaches}
-\author{Rajarshi Guha and Saurav Das}
+\author{Rajarshi Guha and Sourav Das}
 
 % \author{Sourav Das$^\dagger$ and Rajarshi Guha$^\ddagger$}\\
 % $^\dagger$St. Jude Children's Research Hospital \\ 262 Danny Thomas Place, Memphis, TN 38105 \\
@@ -221,6 +221,9 @@ of the drug-target network concept by developing an interaction
 network of FDA approved drugs and protein pockets. Drugs were docked
 into each pocket and the docking score was used to define edges
 between the drug and protein whose pocket it was docked to.
+
+Other tools that utilize drug-target networks include the DrugComboRanker \cite{huang2014drugcomboranker} where the authors use a community based partitioning to create a drug metacommunity network and a disease signaling metacommunity network. Drug targets are then mapped onto disease networks to allow identification of synergistic pairs of drugs and complementary mechanisms of action. In the tool MANTRA (Mode of Action by NeTwoRk Analysis)\cite{iorio2010discovery}, authors apply the concept of network communities to deduce mechanism of action of new molecules and suggest repositioning of a well known molecule to a new area of therapeutic application. A recently developed package in R called the TIMMA-R package by He et al. (2015) combines binary drug-target data and drug-sensitivity profiles to predict synergistic pairs of anti-cancer drugs. The package is freely available from the CRAN repository.
+
 
 
 \subsection{Disease networks}

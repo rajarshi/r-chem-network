@@ -46,26 +46,26 @@ behavior and interactions of individual molecular entities as a way to
 understand and explain biological phenomena. This approach has become
 embodied in the ``one-target, one-drug'' approach to drug
 development. Leaving aside the subtleties of how targets are defined
-\cite{Imming:2006lt}, it has become increasingly clear that many drugs
-(and more generally, small molecules) exhibit polypharmacological
-behavior - interacting with multiple targets, including their putative
-primary target. In many cases, the activity against the primary target
-is significantly higher than off-target activities, minimizing the
-effects of the latter. However, this is not always the case as in the
-example of terfenadine (a histamine H1 antagonist), where off target
-activity against hERG \cite{Crumb:1995it} led to an increased risk of
-cardiac death. Concurrently, it is becoming increasingly clear that
-many diseases are not driven by dysfunction of a single
-target. Examples include diabetes and cancer. Even when a single
-target is the main driver for a given disease state, compensatory
-pathways can ``route around'' inhibition of the primary target, thus
-restoring the functional behavior that the primary target is
-responsible (i.e., the system is now resistant to the original drug)
-\cite{Sierra:2010mz,Dienstmann:2012qr}. While the preceding discussion
-presents polypharmacological behavior as a negative characteristic,
-this is not always the case. Indeed, modern approaches to drug
-development now consider such behavior attractive, leading to efforts
-to rationally design or control polypharmacology
+\cite{Imming:2006lt}, it has become increasingly clear that many small
+molecules exhibit polypharmacological behavior - interacting with
+multiple targets, including their putative primary target. In many
+cases, the activity against the primary target is significantly higher
+than off-target activities, minimizing the effects of the
+latter. However, this is not always the case as in the example of
+terfenadine (a histamine H1 antagonist), where off target activity
+against hERG \cite{Crumb:1995it} led to an increased risk of cardiac
+death. Concurrently, it is becoming increasingly clear that many
+diseases are not driven by dysfunction of a single target. Examples
+include diabetes and cancer. Even when a single target is the main
+driver for a given disease state, compensatory pathways can ``route
+around'' inhibition of the primary target, thus restoring the
+functional behavior that the primary target is responsible (i.e., the
+system is now resistant to the original drug)
+\cite{Sierra:2010mz,Dienstmann:2012qr}. While this discussion presents
+polypharmacological behavior as a negative characteristic, this is not
+always the case. Indeed, modern approaches to drug development now
+consider such behavior attractive, leading to efforts to rationally
+design or control polypharmacology
 \cite{Gujral:2014dp,Ciceri:2014fv,Metz:2010ys}.
 
 Given these observations it is clear that pathways play fundamental
@@ -73,10 +73,17 @@ roles in biological systems. Naturally, approaches that analyse these
 networked systems can be effective in understanding their behavior and
 then identifying ways to modulate them. Importantly, network
 approaches provide the opportunity to integrate multiple entity types
-(small molecules, protein targets, genes) in a systematic fashion.The
-remainder of this chapter looks at how network methods can be applied
-to various topics in drug discovery ranging from drug-target
-interactions to analyzing structure-activity relationships.
+(small molecules, protein targets, genes) in a systematic fashion.
+
+The remainder of this chapter looks at how network methods can be
+applied to various topics in drug discovery ranging from drug-target
+interactions to analyzing structure-activity relationships. In
+addition to reviewing methodologies, we also highlight implementations
+of these methods and related tools that are available for network
+analyses in the R environment. We conclude the chapter with a
+discussion of working with chemical structure data in the R
+environment and how such structures can be employed in a network
+analysis.
 
 \section{The Role of Networks in Drug Discovery}  
 \label{sec:role-networks-drug}
@@ -105,7 +112,7 @@ Reuters) integrate small molecules, protein and gene targets and the
 published literature, providing a rich source of relationships between
 these entities.
 
-Using these databases, network methods can be applied to various
+Using these databases, network methods can be applied at various
 stages of the drug discovery pipeline. For example, target
 identification can benefit from network analyses by characterizing the
 role of a given target in the context of the larger interaction and
@@ -127,10 +134,9 @@ multiple data types. An example of this was described by Young et al
 ligand-target prediction models to construct network representations
 of MoA hypotheses. Network approaches have also been proposed for SAR
 analysis \cite{Iyer:2011ij,Wawer:2008aa}, usually at the lead
-optimization stage of the discovery pipeline. Drug repositioning
-efforts \cite{Dudley:2011dn,Gottlieb:2011rx} benefit from network
-analyses such as community detection algorithms
-\cite{girvan2002community}.
+optimization stage. Drug repositioning efforts
+\cite{Dudley:2011dn,Gottlieb:2011rx} benefit from network analyses
+such as community detection algorithms \cite{girvan2002community}.
 
 While drugs can range from small molecules to antibodies and from pure
 compounds to mixtures, the following sections focus on how network
@@ -146,16 +152,17 @@ employed to analyze them.
 Since small molecules are fundamentally weighted networks (of atoms
 and bonds), a variety of graph algorithms can be applied to them to
 derive invariants (also known as topological descriptors
-\cite{Guha:2012vn}). However, small molecules interact with protein
-targets and the targets themselves interact with each other. Such
-explicit interactions lend themselves naturally to network
-representations. More generally, observed or computed relationships
-between small molecules, protein or gene targets and diseases allow
-one to develop network representations of these entities which can
-then be visualized and quantified to support integrative analyses of
-multiple data types. In the following subsections we highlight
-applications of this approach and where possible provide examples of R
-code to generate and analyze such networks.
+\cite{Guha:2012vn}). In this work we focus on small molecule
+interactions with protein targets and the targets themselves interact
+with each other. Such explicit interactions lend themselves naturally
+to network representations. More generally, observed or computed
+relationships between small molecules, protein or gene targets and
+diseases allow one to develop network representations of these
+entities which can then be visualized and quantified to support
+integrative analyses of multiple data types. In the following
+subsections we highlight applications of this approach and where
+possible provide examples of R code to generate and analyze such
+networks.
 
 \subsection{Drug-target networks}
 \label{sec:drug-target-networks}
@@ -202,13 +209,12 @@ targets. Drug-target networks have been used as input to a variety of
 predictive models. For example, a model to predict ATC codes from a
 drug-target network was described by Wang et al
 \cite{Wang:2013ye}. Tabei et al \cite{Tabei:2012tn} used a drug-target
-network a input to a classifier that was used to extract chemogenomic
+network as input to a classifier that was used to extract chemogenomic
 features. These features represent associations between chemical
 substructures and protein domains. The set of features that provides a
 compressed representation of the drug-target network and the authors
 proposed that they could be used to suggest new substructures for a
-given protein domain. Ma and Zhao (Bioinformatics, 2012) have developed the R package called FacPad that utilizes a Bayesian sparse factor
-model to identify pathways that are perturbed upon to drug treatments. 
+given protein domain. 
 
 A number of workers have used drug-target network information as the
 basis of drug repositioning methodologies. Wang et al
@@ -223,7 +229,22 @@ network of FDA approved drugs and protein pockets. Drugs were docked
 into each pocket and the docking score was used to define edges
 between the drug and protein whose pocket it was docked to.
 
-Other tools that utilize drug-target networks include the DrugComboRanker \cite{huang2014drugcomboranker} where the authors use a community based partitioning to create a drug metacommunity network and a disease signaling metacommunity network. Drug targets are then mapped onto disease networks to allow identification of synergistic pairs of drugs and complementary mechanisms of action. In the tool MANTRA (Mode of Action by NeTwoRk Analysis)\cite{iorio2010discovery}, authors apply the concept of network communities to deduce mechanism of action of new molecules and suggest repositioning of a well known molecule to a new area of therapeutic application. A recently developed package in R called the TIMMA-R package by He et al. (2015) combines binary drug-target data and drug-sensitivity profiles to predict synergistic pairs of anti-cancer drugs. The package is freely available from the CRAN repository.
+A variety of algorithms related to repositioning and activity
+predictions, based on drug-target networks have been implemented in
+R. Ma and Zhao \cite{Ma:2012qy} implemented the FacPad method that
+utilizes a Bayesian sparse factor model to identify pathways that are
+perturbed upon drug treatments. The DrugComboRanker package
+\cite{Huang:2014by} employed a community based partitioning to create
+a drug meta-community network and a disease signaling meta-community
+network. Drug targets were then mapped onto disease networks to allow
+identification of synergistic pairs of drugs and complementary
+mechanisms of action. In the tool called MANTRA (Mode of Action by
+NeTwoRk Analysis) \cite{iorio2010discovery}, authors used network
+communities to deduce mechanism of action of new molecules and suggest
+repositioning of a well known molecule to a new therapeutic
+arean. Finally the TIMMA-R package \cite{He:2015ly} combines binary
+drug-target data and drug-sensitivity profiles to predict synergistic
+pairs of anti-cancer drugs.
 
 
 
@@ -658,7 +679,7 @@ up alternative avenues of investigation.
 \label{sec:acknowledgements}
 
 We would like to thank Dac-Trung Nguyen and Tyler Peryea for fruitful
-discussions related scaffold and scaffold-document networks.
+discussions related to scaffold and scaffold-document networks.
 
 \bibliography{paper}
 

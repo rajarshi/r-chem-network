@@ -3,6 +3,7 @@ library(RColorBrewer)
 library(Hmisc)
 
 id <- 12477366
+##id <- 21568322
 g <- read.graph(sprintf('4-%d.xml',id), format='graphml')
 
 ## degree of doc nodes - how many fragments did we identify?
@@ -39,6 +40,20 @@ tmp$col[ which(tmp$klass == 'doc' & is.na(tmp$col)) ] <- 'grey'
 tmp <- tmp[order(tmp$id),]
 vcol <- tmp$col
 
+## Target classification headings
+tc <- data.frame(table(V(g)$l2))
+tc <- tc[order(tc$Freq),]
+tc <- subset(tc, Freq > 3)
+tc.cols <- brewer.pal(nrow(tc), 'Paired')
+tc$col <- tc.cols
+
+tmp <- data.frame(id=1:vcount(g), tc = V(g)$l2, klass=V(g)$klass)
+tmp <- merge(tmp, tc, by.x='tc', by.y='Var1', all.x=TRUE)
+tmp$col[ which(tmp$klass == 'fragment') ] <- 'black'
+tmp$col[ which(tmp$klass == 'doc' & is.na(tmp$col)) ] <- 'grey'
+tmp <- tmp[order(tmp$id),]
+vcol <- tmp$col
+
 vframecol <- rep('black', length(V(g)))
 vframecol[1] <- 'red'
 
@@ -63,7 +78,7 @@ plot(g, layout=l, margin=0,
      edge.color='light grey')
 ## Legend
 par(mar=c(20,10,15,2))
-lut <- mesh
+lut <-  tc
 plot(rep(0, nrow(lut)), 1:nrow(lut), xlim=c(0,1),
      ylim=c(1,nrow(lut)), xaxt='n', yaxt='n',  type='n', axes=FALSE, bty='n', xlab='', ylab='')
 start.y <- 0
@@ -71,7 +86,7 @@ for (i in 1:nrow(lut)) {
   rect(0,start.y, 1,start.y+1, col=lut$col[i], border='light grey')
   start.y <- start.y+1
 }
-axis(side=2, at=seq(0.5, 11.5, by=1), labels=capitalize(as.character(mesh$Var1)), tick=FALSE, las=2)
+axis(side=2, at=seq(0.5, nrow(lut)-0.5, by=1), labels=capitalize(as.character(lut$Var1)), tick=FALSE, las=2)
 dev.off()
 
 

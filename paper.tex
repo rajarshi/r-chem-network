@@ -122,19 +122,19 @@ significant side effects in other parts of the system and can be the
 source of observed side effects \cite{Wang:2013gn}. On these lines,
 approaches to characterize toxicity have employed network analyses
 \cite{Kim:2014xs,Zhang:2014hj}. While some approaches have considered
-side effects [REF] others have considered the problem at the genomic
-level by characterizing gene networks that are perturbed by small
-molecules. Campaigns focused on combination therapies can also benefit
-from a network representation and network inference approaches
-\cite{Huang:2014by,Tang:2013lr} to identify target combinations whose
-simultaneous inhibition leads to synergistic effects. Mechanism of
-action studies can benefit from network analyses by integrating
-multiple data types. An example of this was described by Young et al
-\cite{Young:2008aa} that integrated high content screening and
-ligand-target prediction models to construct network representations
-of MoA hypotheses. Network approaches have also been proposed for SAR
-analysis \cite{Iyer:2011ij,Wawer:2008aa}, usually at the lead
-optimization stage. Drug repositioning efforts
+side effects \cite{Lounkine:2012yf} others have considered the problem
+at the genomic level by characterizing gene networks that are
+perturbed by small molecules. Campaigns focused on combination
+therapies can also benefit from a network representation and network
+inference approaches \cite{Huang:2014by,Tang:2013lr} to identify
+target combinations whose simultaneous inhibition leads to synergistic
+effects. Mechanism of action studies can benefit from network analyses
+by integrating multiple data types. An example of this was described
+by Young et al \cite{Young:2008aa} that integrated high content
+screening and ligand-target prediction models to construct network
+representations of MoA hypotheses. Network approaches have also been
+proposed for SAR analysis \cite{Iyer:2011ij,Wawer:2008aa}, usually at
+the lead optimization stage. Drug repositioning efforts
 \cite{Dudley:2011dn,Gottlieb:2011rx} benefit from network analyses
 such as community detection algorithms \cite{girvan2002community}.
 
@@ -145,6 +145,52 @@ of small molecules with biological systems. We group such interactions
 based on the nature of the interacting entities and provide a brief
 overview of recent work on how network representations have been
 employed to analyze them. 
+
+\section{R for Network Analyses}
+\label{sec:r-network-analyses}
+
+While this chapter focuses on the use of network methodologies in
+various drug discovery related problems, we also focus on the use of R
+for these analyses. Section \ref{sec:r-as-platform} discusses R
+packages oriented towards handling molecular data types such as
+chemical structures and genomic data. In this section we briefly
+review the packages that are available for handling and analyzing
+network datasets. The \texttt{igraph} \cite{Csardi:2006lp} and
+\texttt{network} \cite{Butts:2008tp} packages represent comprehensive
+tools to construct, manipulate and visualize network datasets within
+the R environment. The \texttt{graph} package \cite{Gentleman:1wt}
+also aims to support general graph manipulation, but is somewhat
+limited in scope compared to \texttt{igraph} and \texttt{network}
+(both of which share some aspects of syntax and interfaces). These
+three packages are the basis of many other network analysis and visualization
+packages. An example is \texttt{statnet} \cite{Handcock:2008il} which
+employs the \texttt{network} package and focuses on the use of
+exponential random graph models \cite{Robins:2007cr} to support
+statistical inference and simulation. 
+
+While many network analysis packages in R focus on social science
+applications, there are a plethora of R packages that focus on
+biological networks. For example, the WCGNA package
+\cite{Langfelder:2008cj} implements methods to construct gene networks
+based on co-expression data. The Corbi package \cite{Huang:2013sy}
+implements the CNetQ algorithm for network alignment, a task that is
+relevant for predicting new protein-protein interactions. Given the
+integrative nature of many biological problems that require the use of
+multiple data types (e.g., genomic, proteomic, small molecule),
+network approaches are commonly applied to investigating them. A
+number of R packages support such integrative analyses - BioNet
+\cite{Beisser:2010xp} is an R package that supports a variety of
+integrative analyses, with a particular focus on identifying
+functional modules in $k$-partite networks. NetWeAvers
+\cite{McClellan:2013zf} is similar in nature, though it has
+specialized support for mass spectrometry data. A number of packages
+support statistical operations on graphs. For example,
+\texttt{DEGraph} implements a method to test for differential
+expression of gene networks \cite{Jacob:2012yg}. The \texttt{SANTA}
+package \cite{Cornish:2014vs} implements methods to test the
+association between a network and a phenotype. Several packages are
+also available for enrichment analyses including \texttt{FGNet},
+\texttt{miRNApath} and \texttt{viper}.
 
 \section{Linking Small Molecules to Targets, Pathways and Diseases}
 \label{sec:link-small-molec}
@@ -273,21 +319,24 @@ from long non-coding RNAs and diseases by Zhou et al
 employed to identify novel lncRNA-disease associations. These
 approaches play an important role in drug discovery as they provide
 opportunities for repurposing drugs based on novel disease-target or
-disease-pathway associations. Another view provided by such analysis
+disease-pathway associations. For example, Pacini et al
+\cite{Pacini:2013kl} describe DvD, a pipeline comprised of R and
+Cytoscape \cite{Shannon:2003aa} to identify repurposing opportunities
+using gene expression profiles. Another view provided by such analysis
 is the druggability of a disease; that is, based on underlying targets
 and pathways, is it even feasible to treat the disease using a small
 molecule intervention \cite{Boran:2010fk}. An important function of
 network analyses of diseases is to go beyond simply identifying new
 targets for diseases or links between diseases, but instead attempt to
-elucidate the mechanisms underlying condition. As an example of this is
-the paradoxical effects of MEK inhibition and PI3K/AKT inhibition and
-the effects on cancer resistance \cite{Sos:2009gc}. Together with knowledge
-of the underlying network connectivity, these approaches allow one to
-design combination treatments - multiple drugs that affect multiple
-targets and pathways. This approach was exemplified by Lehar et al
-\cite{Lehar:2009gu} who proposed that drug combination response
-surfaces were functionally related to the underlying connectivity of
-the drug targets.
+elucidate the mechanisms underlying condition. As an example of this
+is the paradoxical effects of MEK inhibition and PI3K/AKT inhibition
+and the effects on cancer resistance \cite{Sos:2009gc}. Together with
+knowledge of the underlying network connectivity, these approaches
+allow one to design combination treatments - multiple drugs that
+affect multiple targets and pathways. This approach was exemplified by
+Lehar et al \cite{Lehar:2009gu} who proposed that drug combination
+response surfaces were functionally related to the underlying
+connectivity of the drug targets.
 
 
 \subsection{SAR networks}
@@ -478,7 +527,8 @@ $\rightarrow$ fragment). In addition we applied constraints on the
 fragments (e.g., must be contained in 20 to 50 molecules and exhibit a
 minimum complexity), resulting in a network with 1277 nodes (816
 document nodes and 461 fragment nodes) shown in Figure
-\ref{fig:scafodcnet}. 
+\ref{fig:scafdocnet}. 
+
 \begin{figure}[h]
   \centering
   \includegraphics[width=\linewidth]{img/12477366}
@@ -528,25 +578,55 @@ The core concepts involved in computational drug discovery can be
 reduced to genes, proteins, pathways and small molecules interacting
 with them. Computational representations of these concepts and the
 methods to be manipulate them have been implemented in a variety of
-software tools. A comprehensive computational drug discovery platform
-will include a number of these tools, as it is rare that a single tool
-addresses all aspects.
+software tools. These range from software libraries such as the CDK
+\cite{Steinbeck:2006aa} or RDKit \cite{RDKit:2008aa} for manipulating
+chemical structures to pipeline tools such as KNIME
+\cite{KNIME:2008aa} or PipelinePilot that can be used to integrate
+disparate tools and data sources using a graphical user interface.  A
+comprehensive computational drug discovery infrastructure will include
+a number of these tools, as it is rare that a single tool addresses
+all aspects. 
 
-In this sense, the R environment presents a robust platform for
+Statistical modeling and machine learning methods have become an
+integral part of computational drug discovery. Many drug discovery
+tools and platforms provide access to statistical methods. In some
+cases such as in RDKit, these are implemented from scratch, where as
+in others such as PipelinePilot, external statistical tools such as R
+and JMP are integrated.
+
+If one is primarily interested in the statistical analyses in a drug
+discovery setting, the R environment presents a robust platform for
 computational drug discovery, especially the stages up to and
-including lead optimization. The Bioconductor set of packages provide
-a plethora of tools to analyze a variety of ``omics'' data. Examples
-include packages that support gene expression (microarray or RNAseq)
-analyses, tools for differential expression analysis, gene and pathway
-enrichment analysis and so on. 
+including lead optimization.  It is well known that many cutting edge
+statistical techniques are first implemented in R and this is
+increasingly becoming the case for much of bioinformatics. The
+Bioconductor set of packages provides a plethora of tools to analyze a
+variety of ``omics'' data. Examples include packages that support gene
+expression (microarray or RNAseq) analyses, tools for differential
+expression analysis, gene and pathway enrichment analysis and so on.
 
-In contrast, support for small molecule data is limited. Currently,
+However, support for small molecule data is limited. A number of
+packages focus on specific cheminformatics related
+tasks. Examples include the \texttt{Rcpi} package that computes
+protein ligand descriptors \cite{Cao:2015uq} , the \texttt{QuACN} package that
+computes a number of graph invariants \cite{Mueller:2011rz} from a
+molecular graph and the \texttt{RMol} package to parse MOL files
+\cite{Grabner:2012rr}. However, in many scenarios it is useful to
+be able to manipulate chemical structures at a lower level. Thus one
+requires access to core cheminformatics functionality. Currently,
 there are two packages that focus on representing and manipulating
 chemical structures - \texttt{ChemmineR} \cite{Cao:2008fj} and \rcdk
 \cite{Guha:2007aa}. Both expose cheminformatics functionality
 implemented in an underlying Java library (JOELib for ChemmineR and
-the CDK for \rcdk). In this section we focus on the use of \rcdk as a
-means to manipulate and analyze chemical structure data.
+the CDK for \rcdk). These packages provide a low level interface to
+cheminformatics libraries, allowing the R user to manipulate data
+structures representing atoms, bonds and molecules as well as perform
+core cheminformatics tasks such as atom typing and aromaticity
+perception. But in addition, higher level features are also made
+available including descriptor calculation, substructure searching,
+fragmentation and 2D structure depictions. In this section we focus on
+the use of \rcdk a means to manipulate and analyze chemical structure
+data.
 
 The \rcdk package supports a variety of chemical structure file
 formats and presents the CDK Java API as a set of idiomatic R
@@ -576,10 +656,15 @@ colnames(fpsim) <- mipe$SAMPLE_NAME
 rownames(fpsim) <- mipe$SAMPLE_NAME
 fpsim[ fpsim < 0.6 ] <- 0
 \end{lstlisting}
-In this code snippet, we compute a pairwise similarity matrix that we
-will eventually use as an adjacency matrix to construct the similarity
-network. We only keep those similarity values greater than 0.6 so as
-to focus only on similar molecules. 
+In this snippet, we computed hashed path fingerprints as implemented
+in the CDK, using the default values of length (1024) and depth
+(6). The CDK supports multiple fingerprint types including
+substructural keys (MACCS, Pubchem) and circular fingerprints (ECFP)
+and we can easily switch to another one by changing the \texttt{type}
+argument. Once the fingerprints are computed we compute a pairwise
+similarity matrix that we will eventually use as an adjacency matrix
+to construct the similarity network. We only keep those similarity
+values greater than 0.6 so as to focus only on similar molecules.
 
 \begin{figure}[h]
   \centering
@@ -628,17 +713,17 @@ rapid identification and exploration of novel associations.
 \section{Discussion}
 \label{sec:summary}
 
-In this chapter we have summarized how
-networks have been employed to analyze and visualize small molecule
-data (structures, interactions, activity) in the context of protein
-and gene targets. The fact that chemical structures themselves are graphs allows
-one to apply a number of techniques from graph theory to characterize
-chemical structure (such as the many graph invariants). However, with
-the advent of large collections of chemical structures (from databases
-such as Pubchem or high throughput screening programs) along with
-associated data such as bioactivity and target annotations, a number
-of workers have attempted to analyze the properties of such
-collections using network techniques.
+In this chapter we have summarized how networks have been employed to
+analyze and visualize small molecule data (structures, interactions,
+activity) in the context of protein and gene targets. The fact that
+chemical structures themselves are graphs allows one to apply a number
+of techniques from graph theory to characterize chemical structure
+(such as the many graph invariants). However, with the advent of large
+collections of chemical structures (from databases such as Pubchem or
+high throughput screening programs) along with associated data such as
+bioactivity and target annotations, a number of workers have attempted
+to analyze the properties of such collections using network
+techniques.
 
 It is interesting to note that many applications of network methods to
 chemical collections focus on visualization of the chemical data,

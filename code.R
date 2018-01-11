@@ -7,7 +7,7 @@ library(DBI)
 library(RMySQL)
 
 m<-dbDriver("MySQL");
-con<-dbConnect(m,user='guhar',password='beeb1e',host='bohr.ncats.nih.gov',dbname='bard3');
+con<-dbConnect(m,user='XXX',password='XXX',host='XXX',dbname='XXX');
 
 mipe <- read.csv('data/mipe.csv', header=TRUE, as.is=TRUE)
 mipe <- subset(mipe, GENE_SYMBOL != '')
